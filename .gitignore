@@ -1,0 +1,78 @@
+## ==================================================
+## .NET / Visual Studio
+## ==================================================
+bin/
+obj/
+out/
+publish/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio / Rider / VS Code user state
+.vs/
+.vscode/
+.idea/
+*.user
+*.userosscache
+*.sln.docstates
+*.suo
+*.userprefs
+*.dotSettings.user
+
+## Build results
+[Dd]ebugPublic/
+[Rr]eleases/
+artifacts/
+publish-fd/
+publish-sc/
+TestResults/
+*.trx
+coverage*.xml
+coverage*.json
+*.coverage
+*.coveragexml
+
+## NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+.nuget/
+
+## ==================================================
+## Project-specific packaging output
+## ==================================================
+dist/
+installer/Output/
+*.iss-backup
+
+## Runtime data that must never be committed
+## (these only ever appear next to a portable exe or in %APPDATA%, never in the repo)
+**/portable.flag
+/dist-data/
+radioclassic.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.log
+
+## OS junk
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+## Backup / temp files
+*.bak
+*.tmp
+*.temp
+*~
+*.swp

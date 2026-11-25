@@ -1,0 +1,45 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <!-- Classic: the default nostalgic look - light silver-blue like the original's era -->
+    <Color x:Key="AccentColor">#2F6DB3</Color>
+
+    <SolidColorBrush x:Key="WindowBack" Color="#EEF1F6"/>
+    <SolidColorBrush x:Key="PanelBack" Color="#E4E9F2"/>
+    <SolidColorBrush x:Key="ListBack" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="InputBack" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="StatusBack" Color="#DCE3EE"/>
+
+    <SolidColorBrush x:Key="Text" Color="#1A2430"/>
+    <SolidColorBrush x:Key="TextDim" Color="#5A6B80"/>
+    <SolidColorBrush x:Key="SelectionText" Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="AccentTextBrush" Color="#1F5CA8"/>
+
+    <SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+    <SolidColorBrush x:Key="SelectionBack" Color="#3D7BC4"/>
+    <SolidColorBrush x:Key="HoverBack" Color="#D8E4F4"/>
+    <SolidColorBrush x:Key="HeaderBack" Color="#DDE4EF"/>
+    <SolidColorBrush x:Key="BorderBrush" Color="#9AA9BC"/>
+
+    <LinearGradientBrush x:Key="BtnBack" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#5A6C84" Offset="0"/>
+        <GradientStop Color="#3E4E64" Offset="0.5"/>
+        <GradientStop Color="#2E3C50" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BtnHover" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#6E8199" Offset="0"/>
+        <GradientStop Color="#50637D" Offset="0.5"/>
+        <GradientStop Color="#40516B" Offset="1"/>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="BtnPressed" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#26303F" Offset="0"/>
+        <GradientStop Color="#38495F" Offset="1"/>
+    </LinearGradientBrush>
+    <SolidColorBrush x:Key="BtnBorder" Color="#1C2735"/>
+    <SolidColorBrush x:Key="Glyph" Color="#F2F5FA"/>
+
+    <SolidColorBrush x:Key="DisplayBack" Color="#10161F"/>
+    <SolidColorBrush x:Key="DisplayBar" Color="#E8EEF7"/>
+    <SolidColorBrush x:Key="DisplayPeak" Color="#7FB2F0"/>
+    <SolidColorBrush x:Key="BufferFill" Color="#4CAF50"/>
+    <SolidColorBrush x:Key="RecBrush" Color="#E23A3A"/>
+</ResourceDictionary>

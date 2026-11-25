@@ -1,0 +1,190 @@
+<Window x:Class="RadioClassic.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:RadioClassic.Controls"
+        Title="RadioClassic" Width="560" Height="440" MinWidth="480" MinHeight="300"
+        Background="{DynamicResource WindowBack}"
+        FontFamily="{DynamicResource AppFont}" FontSize="{DynamicResource AppFontSize}"
+        Icon="/RadioClassic;component/Assets/app.ico"
+        Closing="OnClosing" Loaded="OnLoaded" SizeChanged="OnSizeChanged" StateChanged="OnStateChanged">
+    <Grid Margin="4">
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="InfoRow" Height="Auto"/>
+            <RowDefinition x:Name="SearchRow" Height="Auto"/>
+            <RowDefinition x:Name="CountRow" Height="Auto"/>
+            <RowDefinition x:Name="FilterRow" Height="Auto"/>
+            <RowDefinition x:Name="ListRow" Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- ==================== A. info display: station, track, quality ==================== -->
+        <Grid Grid.Row="0" Margin="0,0,0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock x:Name="RecIndicator" Text="{Binding RecordingText}" Foreground="{DynamicResource RecBrush}"
+                           FontWeight="Bold" Margin="0,0,6,0" VerticalAlignment="Center"
+                           Visibility="{Binding IsRecordingActive, Converter={StaticResource BoolToVis}}"/>
+                <TextBlock Text="{Binding StationLine}" FontWeight="SemiBold" VerticalAlignment="Center"
+                           TextTrimming="CharacterEllipsis" ToolTip="{Binding StationLine}"/>
+                <TextBlock Text="{Binding TrackLine}" Style="{DynamicResource DimText}" VerticalAlignment="Center"
+                           TextTrimming="CharacterEllipsis" Margin="8,0,0,0" ToolTip="{Binding TrackLine}"/>
+            </StackPanel>
+            <Button Grid.Column="1" x:Name="CompactButton" Style="{DynamicResource TinyButton}" Tag="{DynamicResource G.Compact}"
+                    ToolTip="{DynamicResource Tip.Compact}" Click="OnCompactClick"/>
+        </Grid>
+
+        <!-- ==================== B. search row ==================== -->
+        <Grid Grid.Row="1" Margin="0,0,0,3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ComboBox x:Name="SearchBox" IsEditable="True" IsTextSearchEnabled="False"
+                      ToolTip="{DynamicResource Tip.Search}"
+                      Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}"
+                      KeyDown="OnSearchKeyDown"/>
+            <Button Grid.Column="1" Style="{DynamicResource TinyButton}" Tag="{DynamicResource G.Refresh}" Margin="3,0,0,0"
+                    ToolTip="{DynamicResource Tip.RefreshDb}" Click="OnRefreshDatabaseClick"
+                    IsEnabled="{Binding DatabaseBusy, Converter={StaticResource InverseBool}}"/>
+            <ComboBox Grid.Column="2" x:Name="ViewCombo" Width="118" Margin="3,0,0,0"
+                      ToolTip="{DynamicResource Tip.View}" SelectionChanged="OnViewComboChanged"/>
+            <Button Grid.Column="3" x:Name="FilterToggle" Style="{DynamicResource TinyButton}" Tag="{DynamicResource G.Filter}" Margin="3,0,0,0"
+                    ToolTip="{DynamicResource Tip.Filters}" Click="OnFilterToggleClick"/>
+        </Grid>
+
+        <!-- stations count + stream quality -->
+        <Grid Grid.Row="2" Margin="1,0,1,3">
+            <TextBlock Text="{Binding StationCount}" Style="{DynamicResource DimText}" FontSize="11" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding DatabaseStatus}" Style="{DynamicResource AccentText}" FontSize="11" VerticalAlignment="Center"
+                       HorizontalAlignment="Center" TextTrimming="CharacterEllipsis"/>
+            <TextBlock Text="{Binding QualityText}" FontSize="11" FontWeight="SemiBold" VerticalAlignment="Center"
+                       HorizontalAlignment="Right" Foreground="{DynamicResource Text}"/>
+        </Grid>
+
+        <!-- ==================== filters (collapsible) ==================== -->
+        <WrapPanel Grid.Row="3" x:Name="FilterPanel" Margin="0,0,0,3" Visibility="Collapsed">
+            <ComboBox x:Name="CountryCombo" Width="105" Margin="0,0,3,2" ItemsSource="{Binding Countries}"
+                      ToolTip="{DynamicResource Col.Country}" SelectionChanged="OnFilterChanged" Tag="country"/>
+            <ComboBox x:Name="LanguageCombo" Width="100" Margin="0,0,3,2" ItemsSource="{Binding Languages}"
+                      ToolTip="{DynamicResource Col.Language}" SelectionChanged="OnFilterChanged" Tag="language"/>
+            <ComboBox x:Name="GenreCombo" Width="95" Margin="0,0,3,2" IsEditable="True"
+                      Text="{Binding FilterGenre, UpdateSourceTrigger=LostFocus}"
+                      ToolTip="{DynamicResource Col.Genre}" SelectionChanged="OnFilterChanged" Tag="genre"/>
+            <ComboBox x:Name="CodecCombo" Width="62" Margin="0,0,3,2"
+                      ToolTip="{DynamicResource Col.Codec}" SelectionChanged="OnFilterChanged" Tag="codec"/>
+            <ComboBox x:Name="BitrateCombo" Width="62" Margin="0,0,3,2"
+                      ToolTip="{DynamicResource Filter.MinBitrate}" SelectionChanged="OnFilterChanged" Tag="bitrate"/>
+            <ComboBox x:Name="FolderCombo" Width="100" Margin="0,0,3,2" ItemsSource="{Binding FavoriteFolders}"
+                      ToolTip="{DynamicResource Menu.Favorites}" SelectionChanged="OnFolderChanged" Visibility="Collapsed"/>
+        </WrapPanel>
+
+        <!-- ==================== C. station list ==================== -->
+        <Grid Grid.Row="4">
+            <ListView x:Name="StationList" ItemsSource="{Binding Stations}"
+                      SelectedItem="{Binding SelectedStation}"
+                      MouseDoubleClick="OnStationDoubleClick" KeyDown="OnStationListKeyDown"
+                      SelectionChanged="OnStationSelectionChanged">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn x:Name="ColTitle" Header="{DynamicResource Col.Title}" Width="220"
+                                        DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="{DynamicResource Col.Country}" Width="78"
+                                        DisplayMemberBinding="{Binding Country}"/>
+                        <GridViewColumn Header="{DynamicResource Col.Genre}" Width="88"
+                                        DisplayMemberBinding="{Binding GenreDisplay}"/>
+                        <GridViewColumn Header="{DynamicResource Col.Language}" Width="80"
+                                        DisplayMemberBinding="{Binding LanguageDisplay}"/>
+                        <GridViewColumn Header="{DynamicResource Col.Codec}" Width="52"
+                                        DisplayMemberBinding="{Binding Codec}"/>
+                        <GridViewColumn Header="{DynamicResource Col.Bitrate}" Width="44"
+                                        DisplayMemberBinding="{Binding BitrateDisplay}"/>
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu x:Name="StationContextMenu" Opened="OnStationContextMenuOpened">
+                        <MenuItem Header="{DynamicResource Ctx.Play}" Click="OnContextPlay"/>
+                        <MenuItem x:Name="CtxRecordItem" Header="{DynamicResource Ctx.Record}" Click="OnContextRecord"/>
+                        <MenuItem Header="{DynamicResource Ctx.Schedule}" Click="OnContextSchedule"/>
+                        <Separator/>
+                        <MenuItem x:Name="CtxFavoriteItem" Header="{DynamicResource Ctx.AddToFavorites}" Click="OnContextFavorite"/>
+                        <MenuItem Header="{DynamicResource Menu.Details}" Click="OnContextDetails"/>
+                        <MenuItem x:Name="CtxEditItem" Header="{DynamicResource Ctx.EditStation}" Click="OnContextEdit"/>
+                        <MenuItem x:Name="CtxDeleteItem" Header="{DynamicResource Ctx.DeleteStation}" Click="OnContextDelete"/>
+                        <Separator/>
+                        <MenuItem Header="{DynamicResource Ctx.CopyUrl}" Click="OnContextCopyUrl"/>
+                        <MenuItem x:Name="CtxHomepageItem" Header="{DynamicResource Ctx.Homepage}" Click="OnContextHomepage"/>
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+            <TextBlock x:Name="EmptyHint" Style="{DynamicResource DimText}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                       TextAlignment="Center" Margin="30" Visibility="Collapsed" TextWrapping="Wrap"/>
+        </Grid>
+
+        <!-- ==================== D. status strip ==================== -->
+        <Grid Grid.Row="5" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="{Binding BufferText}" Style="{DynamicResource DimText}" FontSize="10"/>
+                <ProgressBar Value="{Binding BufferPercent}" Maximum="100" Height="5" Margin="0,1,8,0"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="{Binding StateText}" FontSize="11" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding ElapsedText}" Style="{DynamicResource DimText}" FontSize="11" Margin="4,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text="{Binding ErrorText}" Foreground="{DynamicResource RecBrush}" FontSize="11" Margin="6,0,0,0" VerticalAlignment="Center"
+                           TextTrimming="CharacterEllipsis" MaxWidth="240"/>
+            </StackPanel>
+            <Slider Grid.Column="2" Width="100" VerticalAlignment="Center" Margin="4,0,2,0"
+                    ToolTip="{DynamicResource Tip.Volume}"
+                    Value="{Binding Volume, Mode=TwoWay}"/>
+        </Grid>
+
+        <!-- ==================== E. controls + spectrum ==================== -->
+        <Grid Grid.Row="6" Margin="0,4,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Button x:Name="PlayButton" Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Play}"
+                        ToolTip="{DynamicResource Tip.Play}" Click="OnPlayPauseClick"/>
+                <Button Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Stop}"
+                        ToolTip="{DynamicResource Tip.Stop}" Click="OnStopClick"/>
+                <Button Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Previous}"
+                        ToolTip="{DynamicResource Tip.Previous}" Click="OnPreviousClick"/>
+                <Button Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Next}"
+                        ToolTip="{DynamicResource Tip.Next}" Click="OnNextClick"/>
+                <Button x:Name="RecordButton" Style="{DynamicResource RecordButton}" Tag="{DynamicResource G.Record}"
+                        ToolTip="{DynamicResource Tip.Record}" Click="OnRecordClick"/>
+            </StackPanel>
+
+            <controls:SpectrumControl x:Name="Spectrum" Grid.Column="1" Height="26" Margin="6,0"
+                                      VerticalAlignment="Center"
+                                      PanelBrush="{DynamicResource DisplayBack}"
+                                      BarBrush="{DynamicResource DisplayBar}"
+                                      PeakBrush="{DynamicResource DisplayPeak}"/>
+
+            <StackPanel Grid.Column="2" Orientation="Horizontal" VerticalAlignment="Center">
+                <Button x:Name="FavoriteButton" Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Heart}"
+                        ToolTip="{DynamicResource Tip.Favorites}" Click="OnFavoriteClick"/>
+                <Button x:Name="MuteButton" Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Speaker}"
+                        ToolTip="{DynamicResource Tip.Mute}" Click="OnMuteClick"/>
+                <Button Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Equalizer}"
+                        ToolTip="{DynamicResource Tip.Equalizer}" Click="OnEqualizerClick"/>
+                <Button x:Name="MenuButton" Style="{DynamicResource PlayerButton}" Tag="{DynamicResource G.Menu}"
+                        ToolTip="{DynamicResource Tip.Menu}" Click="OnMenuClick"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

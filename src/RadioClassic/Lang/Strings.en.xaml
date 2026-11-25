@@ -1,0 +1,315 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib">
+
+    <!-- General -->
+    <s:String x:Key="AppTitle">RadioClassic</s:String>
+    <s:String x:Key="OK">OK</s:String>
+    <s:String x:Key="Cancel">Cancel</s:String>
+    <s:String x:Key="Apply">Apply</s:String>
+    <s:String x:Key="Close">Close</s:String>
+    <s:String x:Key="Yes">Yes</s:String>
+    <s:String x:Key="No">No</s:String>
+    <s:String x:Key="Add">Add</s:String>
+    <s:String x:Key="Edit">Edit</s:String>
+    <s:String x:Key="Delete">Delete</s:String>
+    <s:String x:Key="Save">Save</s:String>
+    <s:String x:Key="Browse">Browse...</s:String>
+    <s:String x:Key="Search">Search</s:String>
+    <s:String x:Key="Import">Import</s:String>
+    <s:String x:Key="Export">Export</s:String>
+    <s:String x:Key="All">All</s:String>
+    <s:String x:Key="None">None</s:String>
+    <s:String x:Key="Enabled">Enabled</s:String>
+
+    <!-- Player tooltips -->
+    <s:String x:Key="Tip.Play">Play / Pause</s:String>
+    <s:String x:Key="Tip.Stop">Stop</s:String>
+    <s:String x:Key="Tip.Previous">Previous station</s:String>
+    <s:String x:Key="Tip.Next">Next station</s:String>
+    <s:String x:Key="Tip.Record">Record / Stop recording</s:String>
+    <s:String x:Key="Tip.Favorites">Add to favorites / remove from favorites</s:String>
+    <s:String x:Key="Tip.Mute">Mute</s:String>
+    <s:String x:Key="Tip.Equalizer">Equalizer</s:String>
+    <s:String x:Key="Tip.Menu">Menu</s:String>
+    <s:String x:Key="Tip.Compact">Compact mode</s:String>
+    <s:String x:Key="Tip.Expand">Full mode</s:String>
+    <s:String x:Key="Tip.Volume">Volume</s:String>
+    <s:String x:Key="Tip.Search">Type to search: station, country, genre or language</s:String>
+    <s:String x:Key="Tip.RefreshDb">Update the station database from the internet</s:String>
+    <s:String x:Key="Tip.View">Show: all stations, favorites, recently played or your own stations</s:String>
+    <s:String x:Key="Tip.Filters">Show or hide the filters</s:String>
+
+    <!-- Player states -->
+    <s:String x:Key="State.Stopped">Stopped</s:String>
+    <s:String x:Key="State.Connecting">Connecting...</s:String>
+    <s:String x:Key="State.Playing">Playing</s:String>
+    <s:String x:Key="State.Paused">Paused</s:String>
+    <s:String x:Key="State.Reconnecting">Reconnecting (try {0})</s:String>
+    <s:String x:Key="State.Error">Error</s:String>
+    <s:String x:Key="State.Recording">REC {0}</s:String>
+    <s:String x:Key="StationsFound">Stations found: {0}</s:String>
+    <s:String x:Key="BufferFmt">Buffer: {0}%</s:String>
+    <s:String x:Key="QualityFmt">{0}, {1} kbps</s:String>
+    <s:String x:Key="NoStationsYet">The station list is empty.</s:String>
+    <s:String x:Key="UpdatingDb">Updating the station database...</s:String>
+    <s:String x:Key="UpdatingDbProgress">Updating the station database... {0} stations</s:String>
+    <s:String x:Key="DbUpdated">Station database updated: {0} stations</s:String>
+    <s:String x:Key="DbUpdateFailed">The station database could not be updated. {0}</s:String>
+    <s:String x:Key="DbUpdateHint">Use the refresh button to try again. You can still add stations manually.</s:String>
+
+    <!-- Errors -->
+    <s:String x:Key="Err.Timeout">The connection timed out.</s:String>
+    <s:String x:Key="Err.CannotOpen">The stream could not be opened.</s:String>
+    <s:String x:Key="Err.NoInternet">There is no internet connection.</s:String>
+    <s:String x:Key="Err.Unsupported">This stream format is not supported.</s:String>
+    <s:String x:Key="Err.Ssl">The secure connection failed.</s:String>
+    <s:String x:Key="Err.Unknown">Playback failed.</s:String>
+    <s:String x:Key="Err.InvalidUrl">The station address is invalid.</s:String>
+    <s:String x:Key="Err.ConnectionLost">The connection was lost.</s:String>
+<s:String x:Key="Err.NoAudio">The station is connected but broadcasting silence.</s:String>
+<s:String x:Key="Err.StreamStalled">The stream is too slow or unstable.</s:String>
+    <s:String x:Key="Err.RecDir">The recording folder cannot be used.</s:String>
+    <s:String x:Key="Err.RecWrite">Writing the recording failed.</s:String>
+
+    <!-- Menu -->
+    <s:String x:Key="Menu.Play">Play</s:String>
+    <s:String x:Key="Menu.Pause">Pause</s:String>
+    <s:String x:Key="Menu.Stop">Stop</s:String>
+    <s:String x:Key="Menu.Mute">Mute</s:String>
+    <s:String x:Key="Menu.Record">Record</s:String>
+    <s:String x:Key="Menu.StopRecording">Stop recording</s:String>
+    <s:String x:Key="Menu.Details">Station details</s:String>
+    <s:String x:Key="Menu.AddStation">Add new station</s:String>
+    <s:String x:Key="Menu.PlayedSongs">Played songs</s:String>
+    <s:String x:Key="Menu.History">Station history</s:String>
+    <s:String x:Key="Menu.Favorites">Favorites</s:String>
+    <s:String x:Key="Menu.AddToFavorites">Add to favorites</s:String>
+    <s:String x:Key="Menu.RemoveFromFavorites">Remove from favorites</s:String>
+    <s:String x:Key="Menu.Equalizer">Equalizer</s:String>
+    <s:String x:Key="Menu.Recordings">Recordings</s:String>
+    <s:String x:Key="Menu.CompactMode">Compact mode</s:String>
+    <s:String x:Key="Menu.ImportPlaylist">Import playlist...</s:String>
+    <s:String x:Key="Menu.ExportFavorites">Export favorites...</s:String>
+    <s:String x:Key="Menu.Language">Language</s:String>
+    <s:String x:Key="Menu.Options">Options</s:String>
+    <s:String x:Key="Menu.About">About</s:String>
+    <s:String x:Key="Menu.Exit">Exit</s:String>
+
+    <!-- Station list context menu -->
+    <s:String x:Key="Ctx.Play">Play</s:String>
+    <s:String x:Key="Ctx.Record">Record this station</s:String>
+    <s:String x:Key="Ctx.StopRecording">Stop recording this station</s:String>
+    <s:String x:Key="Ctx.Schedule">Schedule recording...</s:String>
+    <s:String x:Key="Ctx.AddToFavorites">Add to favorites</s:String>
+    <s:String x:Key="Ctx.RemoveFromFavorites">Remove from favorites</s:String>
+    <s:String x:Key="Ctx.EditStation">Edit station...</s:String>
+    <s:String x:Key="Ctx.DeleteStation">Delete station</s:String>
+    <s:String x:Key="Ctx.CopyUrl">Copy stream address</s:String>
+    <s:String x:Key="Ctx.Homepage">Open homepage</s:String>
+
+    <!-- Views / filters -->
+    <s:String x:Key="View.All">All stations</s:String>
+    <s:String x:Key="View.Favorites">Favorites</s:String>
+    <s:String x:Key="View.Recent">Recently played</s:String>
+    <s:String x:Key="View.Custom">My stations</s:String>
+    <s:String x:Key="Col.Title">Title</s:String>
+    <s:String x:Key="Col.Country">Country</s:String>
+    <s:String x:Key="Col.Genre">Genre</s:String>
+    <s:String x:Key="Col.Language">Language</s:String>
+    <s:String x:Key="Col.Codec">Codec</s:String>
+    <s:String x:Key="Col.Bitrate">Kbps</s:String>
+    <s:String x:Key="Filter.MinBitrate">Min. bitrate</s:String>
+    <s:String x:Key="SortBy">Sort by</s:String>
+    <s:String x:Key="Sort.Popularity">Popularity</s:String>
+
+    <!-- Favorites -->
+    <s:String x:Key="Fav.ChooseFolder">Favorite folder:</s:String>
+    <s:String x:Key="Fav.Default">Favorites</s:String>
+    <s:String x:Key="Fav.NewFolder">New folder...</s:String>
+    <s:String x:Key="Fav.NewFolderPrompt">Name of the new favorites folder:</s:String>
+    <s:String x:Key="Fav.Added">Added to favorites.</s:String>
+
+    <!-- Station edit / details -->
+    <s:String x:Key="St.Name">Name</s:String>
+    <s:String x:Key="St.Url">Stream address</s:String>
+    <s:String x:Key="St.Homepage">Homepage</s:String>
+    <s:String x:Key="St.Country">Country</s:String>
+    <s:String x:Key="St.Language">Language</s:String>
+    <s:String x:Key="St.Genre">Genre / tags</s:String>
+    <s:String x:Key="St.Codec">Codec</s:String>
+    <s:String x:Key="St.Bitrate">Bitrate</s:String>
+    <s:String x:Key="St.Votes">Votes</s:String>
+    <s:String x:Key="St.Source">Source</s:String>
+    <s:String x:Key="St.SourceCustom">My stations</s:String>
+    <s:String x:Key="St.SourceRadioBrowser">Radio-Browser community database</s:String>
+    <s:String x:Key="St.AddTitle">Add new station</s:String>
+    <s:String x:Key="St.EditTitle">Edit station</s:String>
+    <s:String x:Key="St.DetailsTitle">Station details</s:String>
+    <s:String x:Key="St.NameRequired">Please enter a name.</s:String>
+    <s:String x:Key="St.UrlInvalid">Please enter a valid stream address starting with http:// or https://</s:String>
+    <s:String x:Key="St.DeleteConfirm">Delete the station "{0}"?</s:String>
+
+    <!-- Import / export -->
+    <s:String x:Key="Io.Imported">{0} stations imported.</s:String>
+    <s:String x:Key="Io.ImportFailed">The playlist could not be imported: {0}</s:String>
+    <s:String x:Key="Io.Exported">Favorites exported.</s:String>
+    <s:String x:Key="Io.ExportFailed">Export failed: {0}</s:String>
+    <s:String x:Key="Io.Filter">Playlists (*.m3u,*.m3u8,*.pls,*.xspf,*.json)|*.m3u;*.m3u8;*.pls;*.xspf;*.json|All files (*.*)|*.*</s:String>
+    <s:String x:Key="Io.ExportFilter">M3U playlist (*.m3u)|*.m3u|PLS playlist (*.pls)|*.pls|XSPF playlist (*.xspf)|*.xspf|RadioClassic JSON (*.json)|*.json</s:String>
+
+    <!-- Recordings window -->
+    <s:String x:Key="Rec.Title">Recordings</s:String>
+    <s:String x:Key="Rec.Active">Active</s:String>
+    <s:String x:Key="Rec.Schedules">Scheduled</s:String>
+    <s:String x:Key="Rec.History">History</s:String>
+    <s:String x:Key="Rec.Station">Station</s:String>
+    <s:String x:Key="Rec.Track">Track</s:String>
+    <s:String x:Key="Rec.File">File</s:String>
+    <s:String x:Key="Rec.Started">Started</s:String>
+    <s:String x:Key="Rec.Duration">Duration</s:String>
+    <s:String x:Key="Rec.Size">Size</s:String>
+    <s:String x:Key="Rec.Format">Format</s:String>
+    <s:String x:Key="Rec.Status">Status</s:String>
+    <s:String x:Key="Rec.EndsAt">Ends at</s:String>
+    <s:String x:Key="Rec.StatusRecording">Recording</s:String>
+    <s:String x:Key="Rec.StatusConnecting">Connecting</s:String>
+    <s:String x:Key="Rec.StatusReconnecting">Reconnecting</s:String>
+    <s:String x:Key="Rec.StatusCompleted">Completed</s:String>
+    <s:String x:Key="Rec.StatusInterrupted">Interrupted</s:String>
+    <s:String x:Key="Rec.StatusFailed">Failed</s:String>
+    <s:String x:Key="Rec.Stop">Stop</s:String>
+    <s:String x:Key="Rec.OpenFolder">Open folder</s:String>
+    <s:String x:Key="Rec.PlayFile">Play file</s:String>
+    <s:String x:Key="Rec.Rename">Rename</s:String>
+    <s:String x:Key="Rec.RenamePrompt">New file name:</s:String>
+    <s:String x:Key="Rec.DeleteFile">Delete</s:String>
+    <s:String x:Key="Rec.DeleteConfirm">Delete the file "{0}" from disk?</s:String>
+    <s:String x:Key="Rec.Properties">Properties</s:String>
+    <s:String x:Key="Rec.ExportList">Export list</s:String>
+    <s:String x:Key="Rec.SearchPrompt">Search recordings</s:String>
+    <s:String x:Key="Rec.NoneActive">Nothing is being recorded right now.</s:String>
+    <s:String x:Key="Rec.NoneScheduled">There are no scheduled recordings.</s:String>
+    <s:String x:Key="Rec.NoneYet">There are no recordings yet.</s:String>
+    <s:String x:Key="Rec.LimitReached">The maximum number of simultaneous recordings is reached (Options - Recording).</s:String>
+    <s:String x:Key="Rec.AlreadyRecording">This station is already being recorded.</s:String>
+
+    <!-- Schedules -->
+    <s:String x:Key="Sch.Add">Add schedule...</s:String>
+    <s:String x:Key="Sch.Edit">Edit schedule...</s:String>
+    <s:String x:Key="Sch.Delete">Delete schedule</s:String>
+    <s:String x:Key="Sch.DeleteConfirm">Delete this scheduled recording?</s:String>
+    <s:String x:Key="Sch.AddTitle">Schedule a recording</s:String>
+    <s:String x:Key="Sch.EditTitle">Edit scheduled recording</s:String>
+    <s:String x:Key="Sch.Station">Station</s:String>
+    <s:String x:Key="Sch.Date">Date</s:String>
+    <s:String x:Key="Sch.Time">Start time</s:String>
+    <s:String x:Key="Sch.Duration">Duration (minutes)</s:String>
+    <s:String x:Key="Sch.Repeat">Repeat</s:String>
+    <s:String x:Key="Sch.Once">Once</s:String>
+    <s:String x:Key="Sch.Daily">Every day</s:String>
+    <s:String x:Key="Sch.Weekly">Weekly</s:String>
+    <s:String x:Key="Sch.Days">Days</s:String>
+    <s:String x:Key="Sch.NextRun">Next run: {0}</s:String>
+    <s:String x:Key="Sch.Note">Note: scheduled recordings run only while RadioClassic is running (it may be minimized to the tray). They cannot start while the computer is off or the application is closed.</s:String>
+    <s:String x:Key="Sch.Started">Scheduled recording started: {0}</s:String>
+    <s:String x:Key="Sch.InvalidDuration">Please enter a duration between 1 and 1440 minutes.</s:String>
+    <s:String x:Key="Day.Su">Su</s:String>
+    <s:String x:Key="Day.Mo">Mo</s:String>
+    <s:String x:Key="Day.Tu">Tu</s:String>
+    <s:String x:Key="Day.We">We</s:String>
+    <s:String x:Key="Day.Th">Th</s:String>
+    <s:String x:Key="Day.Fr">Fr</s:String>
+    <s:String x:Key="Day.Sa">Sa</s:String>
+
+    <!-- Equalizer -->
+    <s:String x:Key="Eq.Title">Equalizer</s:String>
+    <s:String x:Key="Eq.Enabled">Enabled</s:String>
+    <s:String x:Key="Eq.Preset">Preset</s:String>
+    <s:String x:Key="Eq.Bass">Bass</s:String>
+    <s:String x:Key="Eq.Treble">Treble</s:String>
+    <s:String x:Key="Eq.Balance">Balance</s:String>
+    <s:String x:Key="Eq.Preamp">Preamp</s:String>
+    <s:String x:Key="Eq.SavePreset">Save preset...</s:String>
+    <s:String x:Key="Eq.SavePresetPrompt">Name of the preset:</s:String>
+    <s:String x:Key="Eq.DeletePreset">Delete preset</s:String>
+    <s:String x:Key="Eq.Reset">Reset</s:String>
+
+    <!-- Settings -->
+    <s:String x:Key="Opt.Title">Options</s:String>
+    <s:String x:Key="Opt.General">General</s:String>
+    <s:String x:Key="Opt.Playback">Playback</s:String>
+    <s:String x:Key="Opt.Recording">Recording</s:String>
+    <s:String x:Key="Opt.Appearance">Appearance</s:String>
+    <s:String x:Key="Opt.Network">Network</s:String>
+    <s:String x:Key="Opt.RestoreDefaults">Restore defaults</s:String>
+    <s:String x:Key="Opt.RestoreConfirm">Restore all settings to their default values?</s:String>
+    <s:String x:Key="Opt.RestartHint">Takes effect after restarting the application.</s:String>
+
+    <s:String x:Key="Gen.StartWithWindows">Start with Windows</s:String>
+    <s:String x:Key="Gen.StartMinimized">Start minimized in the system tray</s:String>
+    <s:String x:Key="Gen.MinimizeToTray">Minimize to the system tray</s:String>
+    <s:String x:Key="Gen.CloseToTray">Close button minimizes to the tray</s:String>
+    <s:String x:Key="Gen.RememberStation">Remember the last station</s:String>
+    <s:String x:Key="Gen.ResumeOnStart">Automatically start playing after startup</s:String>
+    <s:String x:Key="Gen.Language">Language</s:String>
+    <s:String x:Key="Gen.Notifications">Show notifications (track changes, scheduled recordings)</s:String>
+    <s:String x:Key="Gen.DefaultVolume">Default volume is the volume slider itself; it is remembered automatically.</s:String>
+
+    <s:String x:Key="Pb.Buffer">Network buffer (seconds)</s:String>
+    <s:String x:Key="Pb.AutoReconnect">Reconnect automatically when the connection is lost</s:String>
+    <s:String x:Key="Pb.RetryAttempts">Retry attempts</s:String>
+    <s:String x:Key="Pb.Output">Audio output</s:String>
+    <s:String x:Key="Pb.OutputDefault">Windows default</s:String>
+    <s:String x:Key="Pb.Hotkeys">Global hotkeys (Ctrl+Alt+...)</s:String>
+    <s:String x:Key="Pb.MediaKeys">Media keys</s:String>
+
+    <s:String x:Key="Rc.Folder">Recording folder</s:String>
+    <s:String x:Key="Rc.OpenFolder">Open folder</s:String>
+    <s:String x:Key="Rc.Format">Output format</s:String>
+    <s:String x:Key="Rc.FormatOriginal">Original stream format (no quality loss)</s:String>
+    <s:String x:Key="Rc.Mp3Quality">MP3 quality (kbps)</s:String>
+    <s:String x:Key="Rc.Split">Split recordings into tracks when the stream provides titles</s:String>
+    <s:String x:Key="Rc.TrackTemplate">Track file name</s:String>
+    <s:String x:Key="Rc.ContinuousTemplate">Continuous file name</s:String>
+    <s:String x:Key="Rc.TemplateHint">Tokens: {station} {artist} {title} {date} {time} {datetime}</s:String>
+    <s:String x:Key="Rc.StationFolders">Create a folder per station</s:String>
+    <s:String x:Key="Rc.MaxConcurrent">Simultaneous recordings (max.)</s:String>
+    <s:String x:Key="Rc.NotifyScheduled">Notify when a scheduled recording starts</s:String>
+
+    <s:String x:Key="Ap.Theme">Theme</s:String>
+    <s:String x:Key="Ap.Accent">Accent color</s:String>
+    <s:String x:Key="Ap.AccentDefault">Theme default</s:String>
+    <s:String x:Key="Ap.Spectrum">Show spectrum visualization</s:String>
+    <s:String x:Key="Ap.CompactOnTop">Compact player stays on top</s:String>
+    <s:String x:Key="Ap.ShowFilters">Show filters below the search box</s:String>
+
+    <s:String x:Key="Net.Timeout">Connection timeout (seconds)</s:String>
+    <s:String x:Key="Net.Proxy">Proxy</s:String>
+    <s:String x:Key="Net.ProxySystem">Windows settings</s:String>
+    <s:String x:Key="Net.ProxyNone">No proxy</s:String>
+    <s:String x:Key="Net.ProxyManual">Manual</s:String>
+    <s:String x:Key="Net.ProxyHost">Host</s:String>
+    <s:String x:Key="Net.ProxyPort">Port</s:String>
+    <s:String x:Key="Net.Refresh">Station database refresh (days)</s:String>
+    <s:String x:Key="Net.ReportClicks">Help Radio-Browser statistics by reporting which station I play</s:String>
+
+    <!-- History -->
+    <s:String x:Key="Hist.Title">History</s:String>
+    <s:String x:Key="Hist.Stations">Stations</s:String>
+    <s:String x:Key="Hist.Songs">Played songs</s:String>
+    <s:String x:Key="Hist.Clear">Clear history</s:String>
+    <s:String x:Key="Hist.ClearConfirm">Clear the complete history?</s:String>
+    <s:String x:Key="Hist.PlayedAt">Played at</s:String>
+    <s:String x:Key="Hist.Empty">Nothing has been played yet.</s:String>
+
+    <!-- Tray -->
+    <s:String x:Key="Tray.Show">Show RadioClassic</s:String>
+    <s:String x:Key="Tray.Volume">Volume</s:String>
+    <s:String x:Key="Tray.Exit">Exit</s:String>
+    <s:String x:Key="Tray.NowPlaying">{0} - {1}</s:String>
+
+    <!-- About -->
+    <s:String x:Key="About.Text">A lightweight, classic internet radio player and recorder.&#x0a;&#x0a;Station data: Radio-Browser community database (radio-browser.info).&#x0a;Audio: BASS library (un4seen.com) - free for non-commercial use.&#x0a;&#x0a;No account, no advertising, no tracking. All data stays on this computer.</s:String>
+    <s:String x:Key="About.Version">Version {0}</s:String>
+</ResourceDictionary>

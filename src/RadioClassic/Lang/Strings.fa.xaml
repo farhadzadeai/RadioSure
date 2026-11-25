@@ -1,0 +1,315 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib">
+
+    <!-- General -->
+    <s:String x:Key="AppTitle">RadioClassic</s:String>
+    <s:String x:Key="OK">تأیید</s:String>
+    <s:String x:Key="Cancel">انصراف</s:String>
+    <s:String x:Key="Apply">اعمال</s:String>
+    <s:String x:Key="Close">بستن</s:String>
+    <s:String x:Key="Yes">بله</s:String>
+    <s:String x:Key="No">خیر</s:String>
+    <s:String x:Key="Add">افزودن</s:String>
+    <s:String x:Key="Edit">ویرایش</s:String>
+    <s:String x:Key="Delete">حذف</s:String>
+    <s:String x:Key="Save">ذخیره</s:String>
+    <s:String x:Key="Browse">انتخاب...</s:String>
+    <s:String x:Key="Search">جستجو</s:String>
+    <s:String x:Key="Import">ورود</s:String>
+    <s:String x:Key="Export">خروجی</s:String>
+    <s:String x:Key="All">همه</s:String>
+    <s:String x:Key="None">هیچ‌کدام</s:String>
+    <s:String x:Key="Enabled">فعال</s:String>
+
+    <!-- Player tooltips -->
+    <s:String x:Key="Tip.Play">پخش / توقف موقت</s:String>
+    <s:String x:Key="Tip.Stop">توقف</s:String>
+    <s:String x:Key="Tip.Previous">ایستگاه قبلی</s:String>
+    <s:String x:Key="Tip.Next">ایستگاه بعدی</s:String>
+    <s:String x:Key="Tip.Record">ضبط / پایان ضبط</s:String>
+    <s:String x:Key="Tip.Favorites">افزودن به علاقه‌مندی‌ها / حذف از علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Tip.Mute">بی‌صدا</s:String>
+    <s:String x:Key="Tip.Equalizer">اکولایزر</s:String>
+    <s:String x:Key="Tip.Menu">منو</s:String>
+    <s:String x:Key="Tip.Compact">حالت فشرده</s:String>
+    <s:String x:Key="Tip.Expand">حالت کامل</s:String>
+    <s:String x:Key="Tip.Volume">بلندی صدا</s:String>
+    <s:String x:Key="Tip.Search">برای جستجو بنویسید: ایستگاه، کشور، سبک یا زبان</s:String>
+    <s:String x:Key="Tip.RefreshDb">به‌روزرسانی فهرست ایستگاه‌ها از اینترنت</s:String>
+    <s:String x:Key="Tip.View">نمایش: همه ایستگاه‌ها، علاقه‌مندی‌ها، اخیراً پخش‌شده یا ایستگاه‌های شخصی</s:String>
+    <s:String x:Key="Tip.Filters">نمایش یا پنهان کردن پالایه‌ها</s:String>
+
+    <!-- Player states -->
+    <s:String x:Key="State.Stopped">متوقف</s:String>
+    <s:String x:Key="State.Connecting">در حال اتصال...</s:String>
+    <s:String x:Key="State.Playing">در حال پخش</s:String>
+    <s:String x:Key="State.Paused">توقف موقت</s:String>
+    <s:String x:Key="State.Reconnecting">اتصال دوباره (تلاش {0})</s:String>
+    <s:String x:Key="State.Error">خطا</s:String>
+    <s:String x:Key="State.Recording">ضبط {0}</s:String>
+    <s:String x:Key="StationsFound">ایستگاه‌های یافت‌شده: {0}</s:String>
+    <s:String x:Key="BufferFmt">بافر: {0}٪</s:String>
+    <s:String x:Key="QualityFmt">{0}، {1} کیلوبیت</s:String>
+    <s:String x:Key="NoStationsYet">فهرست ایستگاه‌ها خالی است.</s:String>
+    <s:String x:Key="UpdatingDb">در حال به‌روزرسانی فهرست ایستگاه‌ها...</s:String>
+    <s:String x:Key="UpdatingDbProgress">در حال به‌روزرسانی فهرست ایستگاه‌ها... {0} ایستگاه</s:String>
+    <s:String x:Key="DbUpdated">فهرست ایستگاه‌ها به‌روز شد: {0} ایستگاه</s:String>
+    <s:String x:Key="DbUpdateFailed">فهرست ایستگاه‌ها به‌روز نشد. {0}</s:String>
+    <s:String x:Key="DbUpdateHint">با دکمه‌ی تازه‌سازی دوباره تلاش کنید. می‌توانید ایستگاه هم به‌صورت دستی اضافه کنید.</s:String>
+
+    <!-- Errors -->
+    <s:String x:Key="Err.Timeout">مهلت اتصال به پایان رسید.</s:String>
+    <s:String x:Key="Err.CannotOpen">جریان صدا باز نشد.</s:String>
+    <s:String x:Key="Err.NoInternet">اتصال اینترنت وجود ندارد.</s:String>
+    <s:String x:Key="Err.Unsupported">این قالب صوتی پشتیبانی نمی‌شود.</s:String>
+    <s:String x:Key="Err.Ssl">اتصال امن برقرار نشد.</s:String>
+    <s:String x:Key="Err.Unknown">پخش ناموفق بود.</s:String>
+    <s:String x:Key="Err.InvalidUrl">نشانی ایستگاه معتبر نیست.</s:String>
+    <s:String x:Key="Err.ConnectionLost">اتصال قطع شد.</s:String>
+<s:String x:Key="Err.NoAudio">ایستگاه متصل است اما سکوت پخش می‌کند.</s:String>
+<s:String x:Key="Err.StreamStalled">استریم بسیار کند یا ناپایدار است.</s:String>
+    <s:String x:Key="Err.RecDir">پوشه‌ی ضبط قابل استفاده نیست.</s:String>
+    <s:String x:Key="Err.RecWrite">نوشتن فایل ضبط ناموفق بود.</s:String>
+
+    <!-- Menu -->
+    <s:String x:Key="Menu.Play">پخش</s:String>
+    <s:String x:Key="Menu.Pause">توقف موقت</s:String>
+    <s:String x:Key="Menu.Stop">توقف</s:String>
+    <s:String x:Key="Menu.Mute">بی‌صدا</s:String>
+    <s:String x:Key="Menu.Record">ضبط</s:String>
+    <s:String x:Key="Menu.StopRecording">پایان ضبط</s:String>
+    <s:String x:Key="Menu.Details">جزئیات ایستگاه</s:String>
+    <s:String x:Key="Menu.AddStation">افزودن ایستگاه تازه</s:String>
+    <s:String x:Key="Menu.PlayedSongs">قطعه‌های پخش‌شده</s:String>
+    <s:String x:Key="Menu.History">تاریخچه‌ی ایستگاه‌ها</s:String>
+    <s:String x:Key="Menu.Favorites">علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Menu.AddToFavorites">افزودن به علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Menu.RemoveFromFavorites">حذف از علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Menu.Equalizer">اکولایزر</s:String>
+    <s:String x:Key="Menu.Recordings">ضبط‌ها</s:String>
+    <s:String x:Key="Menu.CompactMode">حالت فشرده</s:String>
+    <s:String x:Key="Menu.ImportPlaylist">ورود فهرست پخش...</s:String>
+    <s:String x:Key="Menu.ExportFavorites">خروجی علاقه‌مندی‌ها...</s:String>
+    <s:String x:Key="Menu.Language">زبان</s:String>
+    <s:String x:Key="Menu.Options">تنظیمات</s:String>
+    <s:String x:Key="Menu.About">درباره</s:String>
+    <s:String x:Key="Menu.Exit">خروج</s:String>
+
+    <!-- Station list context menu -->
+    <s:String x:Key="Ctx.Play">پخش</s:String>
+    <s:String x:Key="Ctx.Record">ضبط این ایستگاه</s:String>
+    <s:String x:Key="Ctx.StopRecording">پایان ضبط این ایستگاه</s:String>
+    <s:String x:Key="Ctx.Schedule">زمان‌بندی ضبط...</s:String>
+    <s:String x:Key="Ctx.AddToFavorites">افزودن به علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Ctx.RemoveFromFavorites">حذف از علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Ctx.EditStation">ویرایش ایستگاه...</s:String>
+    <s:String x:Key="Ctx.DeleteStation">حذف ایستگاه</s:String>
+    <s:String x:Key="Ctx.CopyUrl">رونوشت نشانی جریان</s:String>
+    <s:String x:Key="Ctx.Homepage">باز کردن صفحه‌ی خانگی</s:String>
+
+    <!-- Views / filters -->
+    <s:String x:Key="View.All">همه ایستگاه‌ها</s:String>
+    <s:String x:Key="View.Favorites">علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="View.Recent">اخیراً پخش‌شده</s:String>
+    <s:String x:Key="View.Custom">ایستگاه‌های من</s:String>
+    <s:String x:Key="Col.Title">عنوان</s:String>
+    <s:String x:Key="Col.Country">کشور</s:String>
+    <s:String x:Key="Col.Genre">سبک</s:String>
+    <s:String x:Key="Col.Language">زبان</s:String>
+    <s:String x:Key="Col.Codec">کدک</s:String>
+    <s:String x:Key="Col.Bitrate">کیلوبیت</s:String>
+    <s:String x:Key="Filter.MinBitrate">حداقل نرخ بیت</s:String>
+    <s:String x:Key="SortBy">مرتب‌سازی بر اساس</s:String>
+    <s:String x:Key="Sort.Popularity">محبوبیت</s:String>
+
+    <!-- Favorites -->
+    <s:String x:Key="Fav.ChooseFolder">پوشه‌ی علاقه‌مندی‌ها:</s:String>
+    <s:String x:Key="Fav.Default">علاقه‌مندی‌ها</s:String>
+    <s:String x:Key="Fav.NewFolder">پوشه‌ی تازه...</s:String>
+    <s:String x:Key="Fav.NewFolderPrompt">نام پوشه‌ی تازه‌ی علاقه‌مندی‌ها:</s:String>
+    <s:String x:Key="Fav.Added">به علاقه‌مندی‌ها افزوده شد.</s:String>
+
+    <!-- Station edit / details -->
+    <s:String x:Key="St.Name">نام</s:String>
+    <s:String x:Key="St.Url">نشانی جریان</s:String>
+    <s:String x:Key="St.Homepage">صفحه‌ی خانگی</s:String>
+    <s:String x:Key="St.Country">کشور</s:String>
+    <s:String x:Key="St.Language">زبان</s:String>
+    <s:String x:Key="St.Genre">سبک / برچسب‌ها</s:String>
+    <s:String x:Key="St.Codec">کدک</s:String>
+    <s:String x:Key="St.Bitrate">نرخ بیت</s:String>
+    <s:String x:Key="St.Votes">رأی‌ها</s:String>
+    <s:String x:Key="St.Source">منبع</s:String>
+    <s:String x:Key="St.SourceCustom">ایستگاه‌های من</s:String>
+    <s:String x:Key="St.SourceRadioBrowser">پایگاه اجتماعی Radio-Browser</s:String>
+    <s:String x:Key="St.AddTitle">افزودن ایستگاه تازه</s:String>
+    <s:String x:Key="St.EditTitle">ویرایش ایستگاه</s:String>
+    <s:String x:Key="St.DetailsTitle">جزئیات ایستگاه</s:String>
+    <s:String x:Key="St.NameRequired">لطفاً یک نام وارد کنید.</s:String>
+    <s:String x:Key="St.UrlInvalid">لطفاً نشانی معتبری که با http:// یا https:// شروع می‌شود وارد کنید</s:String>
+    <s:String x:Key="St.DeleteConfirm">ایستگاه «{0}» حذف شود؟</s:String>
+
+    <!-- Import / export -->
+    <s:String x:Key="Io.Imported">{0} ایستگاه وارد شد.</s:String>
+    <s:String x:Key="Io.ImportFailed">فهرست پخش وارد نشد: {0}</s:String>
+    <s:String x:Key="Io.Exported">علاقه‌مندی‌ها خروجی گرفته شد.</s:String>
+    <s:String x:Key="Io.ExportFailed">خروجی ناموفق بود: {0}</s:String>
+    <s:String x:Key="Io.Filter">فهرست‌های پخش (*.m3u,*.m3u8,*.pls,*.xspf,*.json)|*.m3u;*.m3u8;*.pls;*.xspf;*.json|همه پرونده‌ها (*.*)|*.*</s:String>
+    <s:String x:Key="Io.ExportFilter">فهرست پخش M3U (*.m3u)|*.m3u|فهرست پخش PLS (*.pls)|*.pls|فهرست پخش XSPF (*.xspf)|*.xspf|RadioClassic JSON (*.json)|*.json</s:String>
+
+    <!-- Recordings window -->
+    <s:String x:Key="Rec.Title">ضبط‌ها</s:String>
+    <s:String x:Key="Rec.Active">در حال ضبط</s:String>
+    <s:String x:Key="Rec.Schedules">زمان‌بندی‌شده</s:String>
+    <s:String x:Key="Rec.History">تاریخچه</s:String>
+    <s:String x:Key="Rec.Station">ایستگاه</s:String>
+    <s:String x:Key="Rec.Track">قطعه</s:String>
+    <s:String x:Key="Rec.File">پرونده</s:String>
+    <s:String x:Key="Rec.Started">آغاز</s:String>
+    <s:String x:Key="Rec.Duration">مدت</s:String>
+    <s:String x:Key="Rec.Size">اندازه</s:String>
+    <s:String x:Key="Rec.Format">قالب</s:String>
+    <s:String x:Key="Rec.Status">وضعیت</s:String>
+    <s:String x:Key="Rec.EndsAt">پایان در</s:String>
+    <s:String x:Key="Rec.StatusRecording">در حال ضبط</s:String>
+    <s:String x:Key="Rec.StatusConnecting">در حال اتصال</s:String>
+    <s:String x:Key="Rec.StatusReconnecting">اتصال دوباره</s:String>
+    <s:String x:Key="Rec.StatusCompleted">کامل</s:String>
+    <s:String x:Key="Rec.StatusInterrupted">ناقص</s:String>
+    <s:String x:Key="Rec.StatusFailed">ناموفق</s:String>
+    <s:String x:Key="Rec.Stop">توقف</s:String>
+    <s:String x:Key="Rec.OpenFolder">باز کردن پوشه</s:String>
+    <s:String x:Key="Rec.PlayFile">پخش پرونده</s:String>
+    <s:String x:Key="Rec.Rename">تغییر نام</s:String>
+    <s:String x:Key="Rec.RenamePrompt">نام تازه‌ی پرونده:</s:String>
+    <s:String x:Key="Rec.DeleteFile">حذف</s:String>
+    <s:String x:Key="Rec.DeleteConfirm">پرونده «{0}» از دیسک حذف شود؟</s:String>
+    <s:String x:Key="Rec.Properties">ویژگی‌ها</s:String>
+    <s:String x:Key="Rec.ExportList">خروجی فهرست</s:String>
+    <s:String x:Key="Rec.SearchPrompt">جستجو در ضبط‌ها</s:String>
+    <s:String x:Key="Rec.NoneActive">در حال حاضر چیزی ضبط نمی‌شود.</s:String>
+    <s:String x:Key="Rec.NoneScheduled">ضبط زمان‌بندی‌شده‌ای وجود ندارد.</s:String>
+    <s:String x:Key="Rec.NoneYet">هنوز ضبطی انجام نشده است.</s:String>
+    <s:String x:Key="Rec.LimitReached">حداکثر ضبط‌های هم‌زمان پر شده است (تنظیمات - ضبط).</s:String>
+    <s:String x:Key="Rec.AlreadyRecording">این ایستگاه در حال ضبط است.</s:String>
+
+    <!-- Schedules -->
+    <s:String x:Key="Sch.Add">افزودن زمان‌بندی...</s:String>
+    <s:String x:Key="Sch.Edit">ویرایش زمان‌بندی...</s:String>
+    <s:String x:Key="Sch.Delete">حذف زمان‌بندی</s:String>
+    <s:String x:Key="Sch.DeleteConfirm">این ضبط زمان‌بندی‌شده حذف شود؟</s:String>
+    <s:String x:Key="Sch.AddTitle">زمان‌بندی یک ضبط</s:String>
+    <s:String x:Key="Sch.EditTitle">ویرایش ضبط زمان‌بندی‌شده</s:String>
+    <s:String x:Key="Sch.Station">ایستگاه</s:String>
+    <s:String x:Key="Sch.Date">تاریخ</s:String>
+    <s:String x:Key="Sch.Time">زمان آغاز</s:String>
+    <s:String x:Key="Sch.Duration">مدت (دقیقه)</s:String>
+    <s:String x:Key="Sch.Repeat">تکرار</s:String>
+    <s:String x:Key="Sch.Once">یک بار</s:String>
+    <s:String x:Key="Sch.Daily">هر روز</s:String>
+    <s:String x:Key="Sch.Weekly">هفتگی</s:String>
+    <s:String x:Key="Sch.Days">روزها</s:String>
+    <s:String x:Key="Sch.NextRun">اجرای بعدی: {0}</s:String>
+    <s:String x:Key="Sch.Note">توجه: ضبط‌های زمان‌بندی‌شده فقط تا وقتی RadioClassic در حال اجراست انجام می‌شوند (می‌تواند در سینی سیستم کوچک شده باشد). وقتی رایانه خاموش یا برنامه بسته است، ضبطی انجام نمی‌شود.</s:String>
+    <s:String x:Key="Sch.Started">ضبط زمان‌بندی‌شده آغاز شد: {0}</s:String>
+    <s:String x:Key="Sch.InvalidDuration">لطفاً مدتی بین ۱ تا ۱۴۴۰ دقیقه وارد کنید.</s:String>
+    <s:String x:Key="Day.Su">ی</s:String>
+    <s:String x:Key="Day.Mo">د</s:String>
+    <s:String x:Key="Day.Tu">س</s:String>
+    <s:String x:Key="Day.We">چ</s:String>
+    <s:String x:Key="Day.Th">پ</s:String>
+    <s:String x:Key="Day.Fr">ج</s:String>
+    <s:String x:Key="Day.Sa">ش</s:String>
+
+    <!-- Equalizer -->
+    <s:String x:Key="Eq.Title">اکولایزر</s:String>
+    <s:String x:Key="Eq.Enabled">فعال</s:String>
+    <s:String x:Key="Eq.Preset">پیش‌تنظیم</s:String>
+    <s:String x:Key="Eq.Bass">بیس</s:String>
+    <s:String x:Key="Eq.Treble">تربل</s:String>
+    <s:String x:Key="Eq.Balance">تعادل</s:String>
+    <s:String x:Key="Eq.Preamp">پیش‌تقویت</s:String>
+    <s:String x:Key="Eq.SavePreset">ذخیره‌ی پیش‌تنظیم...</s:String>
+    <s:String x:Key="Eq.SavePresetPrompt">نام پیش‌تنظیم:</s:String>
+    <s:String x:Key="Eq.DeletePreset">حذف پیش‌تنظیم</s:String>
+    <s:String x:Key="Eq.Reset">بازنشانی</s:String>
+
+    <!-- Settings -->
+    <s:String x:Key="Opt.Title">تنظیمات</s:String>
+    <s:String x:Key="Opt.General">عمومی</s:String>
+    <s:String x:Key="Opt.Playback">پخش</s:String>
+    <s:String x:Key="Opt.Recording">ضبط</s:String>
+    <s:String x:Key="Opt.Appearance">ظاهر</s:String>
+    <s:String x:Key="Opt.Network">شبکه</s:String>
+    <s:String x:Key="Opt.RestoreDefaults">بازگشت به پیش‌فرض‌ها</s:String>
+    <s:String x:Key="Opt.RestoreConfirm">همه‌ی تنظیمات به مقادیر پیش‌فرض برگردد؟</s:String>
+    <s:String x:Key="Opt.RestartHint">پس از راه‌اندازی دوباره‌ی برنامه اعمال می‌شود.</s:String>
+
+    <s:String x:Key="Gen.StartWithWindows">اجرا با ویندوز</s:String>
+    <s:String x:Key="Gen.StartMinimized">شروع کوچک‌شده در سینی سیستم</s:String>
+    <s:String x:Key="Gen.MinimizeToTray">کوچک‌شدن به سینی سیستم</s:String>
+    <s:String x:Key="Gen.CloseToTray">دکمه‌ی بستن، برنامه را به سینی می‌برد</s:String>
+    <s:String x:Key="Gen.RememberStation">به خاطر سپردن آخرین ایستگاه</s:String>
+    <s:String x:Key="Gen.ResumeOnStart">شروع خودکار پخش پس از اجرا</s:String>
+    <s:String x:Key="Gen.Language">زبان</s:String>
+    <s:String x:Key="Gen.Notifications">نمایش اعلان‌ها (تغییر قطعه، ضبط‌های زمان‌بندی‌شده)</s:String>
+    <s:String x:Key="Gen.DefaultVolume">بلندی صدای پیش‌فرض همان نوار صداست و خودش به خاطر سپرده می‌شود.</s:String>
+
+    <s:String x:Key="Pb.Buffer">بافر شبکه (ثانیه)</s:String>
+    <s:String x:Key="Pb.AutoReconnect">اتصال دوباره‌ی خودکار هنگام قطع شدن</s:String>
+    <s:String x:Key="Pb.RetryAttempts">تعداد تلاش‌های دوباره</s:String>
+    <s:String x:Key="Pb.Output">خروجی صدا</s:String>
+    <s:String x:Key="Pb.OutputDefault">پیش‌فرض ویندوز</s:String>
+    <s:String x:Key="Pb.Hotkeys">کلیدهای میان‌بر سراسری (Ctrl+Alt+...)</s:String>
+    <s:String x:Key="Pb.MediaKeys">کلیدهای چندرسانه‌ای</s:String>
+
+    <s:String x:Key="Rc.Folder">پوشه‌ی ضبط</s:String>
+    <s:String x:Key="Rc.OpenFolder">باز کردن پوشه</s:String>
+    <s:String x:Key="Rc.Format">قالب خروجی</s:String>
+    <s:String x:Key="Rc.FormatOriginal">قالب اصلی جریان (بدون افت کیفیت)</s:String>
+    <s:String x:Key="Rc.Mp3Quality">کیفیت MP3 (کیلوبیت)</s:String>
+    <s:String x:Key="Rc.Split">جداسازی ضبط به قطعه‌ها وقتی جریان عنوان می‌دهد</s:String>
+    <s:String x:Key="Rc.TrackTemplate">نام پرونده‌ی قطعه</s:String>
+    <s:String x:Key="Rc.ContinuousTemplate">نام پرونده‌ی پیوسته</s:String>
+    <s:String x:Key="Rc.TemplateHint">نشانه‌ها: {station} {artist} {title} {date} {time} {datetime}</s:String>
+    <s:String x:Key="Rc.StationFolders">ساخت پوشه برای هر ایستگاه</s:String>
+    <s:String x:Key="Rc.MaxConcurrent">ضبط‌های هم‌زمان (حداکثر)</s:String>
+    <s:String x:Key="Rc.NotifyScheduled">هنگام شروع ضبط زمان‌بندی‌شده اعلان بده</s:String>
+
+    <s:String x:Key="Ap.Theme">پوسته</s:String>
+    <s:String x:Key="Ap.Accent">رنگ تأکیدی</s:String>
+    <s:String x:Key="Ap.AccentDefault">پیش‌فرض پوسته</s:String>
+    <s:String x:Key="Ap.Spectrum">نمایش تجسم طیف صدا</s:String>
+    <s:String x:Key="Ap.CompactOnTop">پخش‌کننده‌ی فشرده روی همه بماند</s:String>
+    <s:String x:Key="Ap.ShowFilters">نمایش پالایه‌ها زیر جعبه‌ی جستجو</s:String>
+
+    <s:String x:Key="Net.Timeout">مهلت اتصال (ثانیه)</s:String>
+    <s:String x:Key="Net.Proxy">پراکسی</s:String>
+    <s:String x:Key="Net.ProxySystem">تنظیمات ویندوز</s:String>
+    <s:String x:Key="Net.ProxyNone">بدون پراکسی</s:String>
+    <s:String x:Key="Net.ProxyManual">دستی</s:String>
+    <s:String x:Key="Net.ProxyHost">میزبان</s:String>
+    <s:String x:Key="Net.ProxyPort">درگاه</s:String>
+    <s:String x:Key="Net.Refresh">تازه‌سازی فهرست ایستگاه‌ها (روز)</s:String>
+    <s:String x:Key="Net.ReportClicks">با گزارش ایستگاهی که پخش می‌کنم به آمار Radio-Browser کمک کن</s:String>
+
+    <!-- History -->
+    <s:String x:Key="Hist.Title">تاریخچه</s:String>
+    <s:String x:Key="Hist.Stations">ایستگاه‌ها</s:String>
+    <s:String x:Key="Hist.Songs">قطعه‌های پخش‌شده</s:String>
+    <s:String x:Key="Hist.Clear">پاک کردن تاریخچه</s:String>
+    <s:String x:Key="Hist.ClearConfirm">کل تاریخچه پاک شود؟</s:String>
+    <s:String x:Key="Hist.PlayedAt">زمان پخش</s:String>
+    <s:String x:Key="Hist.Empty">هنوز چیزی پخش نشده است.</s:String>
+
+    <!-- Tray -->
+    <s:String x:Key="Tray.Show">نمایش RadioClassic</s:String>
+    <s:String x:Key="Tray.Volume">بلندی صدا</s:String>
+    <s:String x:Key="Tray.Exit">خروج</s:String>
+    <s:String x:Key="Tray.NowPlaying">{0} - {1}</s:String>
+
+    <!-- About -->
+    <s:String x:Key="About.Text">پخش‌کننده و ضبط‌کننده‌ی سبک و کلاسیک رادیو اینترنتی.&#x0a;&#x0a;داده‌ی ایستگاه‌ها: پایگاه اجتماعی Radio-Browser (radio-browser.info).&#x0a;صدا: کتابخانه‌ی BASS (un4seen.com) - رایگان برای استفاده‌ی غیرتجاری.&#x0a;&#x0a;بدون حساب کاربری، بدون تبلیغ، بدون ردیابی. همه‌ی داده‌ها روی همین رایانه می‌ماند.</s:String>
+    <s:String x:Key="About.Version">نسخه {0}</s:String>
+</ResourceDictionary>
