@@ -1,0 +1,13 @@
+# macOS / Xcode
+build/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+.DS_Store
+# windows build leftovers (shared working tree)
+bin/
+obj/
+dist/
+publish-fd/
+publish-sc/
+.devin/
