@@ -75,7 +75,7 @@ final class MenuBarController: NSObject {
     private var menuSignature = ""
     private var nowPlayingSignature = ""
     private var globalKeyMonitor: Any?
-    private var equalizerBars: [CGFloat] = [0.2, 0.2, 0.2, 0.2, 0.2]
+    private var wavePhase: CGFloat = 0
 
     func configure(model: MainViewModel) {
         self.model = model
@@ -208,34 +208,40 @@ final class MenuBarController: NSObject {
     private func updateStatusIcon(_ model: MainViewModel) {
         guard let button = statusItem?.button else { return }
         guard model.player.state == .playing else {
-            equalizerBars = [0.2, 0.2, 0.2, 0.2, 0.2]
+            wavePhase = 0
             button.image = NSImage(systemSymbolName: "dot.radiowaves.left.and.right", accessibilityDescription: "RadioClassic")
             return
         }
-        let spectrum = model.player.spectrum(bins: equalizerBars.count)
-        let level = CGFloat(model.player.audioLevel)
-        for index in equalizerBars.indices {
-            let spectral = index < spectrum.count ? CGFloat(spectrum[index]) : 0
-            let target = max(0.14, min(1, spectral * 1.25 + level * 0.22))
-            equalizerBars[index] = max(target, equalizerBars[index] * 0.62)
-        }
-        button.image = makeEqualizerIcon(bars: equalizerBars)
+        wavePhase = (wavePhase + 0.18).truncatingRemainder(dividingBy: 1)
+        let level = CGFloat(max(0.18, min(1, model.player.audioLevel * 1.35)))
+        button.image = makeRadioWavesIcon(phase: wavePhase, level: level)
     }
 
-    private func makeEqualizerIcon(bars: [CGFloat]) -> NSImage {
+    private func makeRadioWavesIcon(phase: CGFloat, level: CGFloat) -> NSImage {
         let size = NSSize(width: 18, height: 18)
         let image = NSImage(size: size)
         image.lockFocus()
-        let widths: CGFloat = 2.4
-        let spacing: CGFloat = 1.25
-        let totalWidth = CGFloat(bars.count) * widths + CGFloat(bars.count - 1) * spacing
-        let startX = (size.width - totalWidth) / 2
-        for (index, value) in bars.enumerated() {
-            let height = max(2.5, 15.5 * value)
-            let rect = NSRect(x: startX + CGFloat(index) * (widths + spacing), y: 1.4, width: widths, height: height)
-            let alpha = 0.38 + 0.62 * value
-            NSColor(calibratedRed: 0.05, green: 0.95, blue: 0.28, alpha: alpha).setFill()
-            NSBezierPath(roundedRect: rect, xRadius: 1.1, yRadius: 1.1).fill()
+        let center = NSPoint(x: size.width / 2, y: size.height / 2)
+        NSColor(calibratedRed: 0.05, green: 1, blue: 0.25, alpha: 0.55 + 0.45 * level).setFill()
+        NSBezierPath(ovalIn: NSRect(x: center.x - 1.45, y: center.y - 1.45, width: 2.9, height: 2.9)).fill()
+
+        for wave in 0..<3 {
+            let progress = (phase + CGFloat(wave) / 3).truncatingRemainder(dividingBy: 1)
+            let radius = 3.0 + progress * 6.0
+            let alpha = (1 - progress) * (0.28 + 0.72 * level)
+            NSColor(calibratedRed: 0.05, green: 1, blue: 0.25, alpha: alpha).setStroke()
+            for direction in [-1.0, 1.0] as [CGFloat] {
+                let path = NSBezierPath()
+                path.lineWidth = 1.25
+                path.lineCapStyle = .round
+                path.move(to: NSPoint(x: center.x + direction * radius * 0.55, y: center.y - radius))
+                path.curve(
+                    to: NSPoint(x: center.x + direction * radius * 0.55, y: center.y + radius),
+                    controlPoint1: NSPoint(x: center.x + direction * radius * 1.15, y: center.y - radius * 0.48),
+                    controlPoint2: NSPoint(x: center.x + direction * radius * 1.15, y: center.y + radius * 0.48)
+                )
+                path.stroke()
+            }
         }
         image.unlockFocus()
         image.isTemplate = false
