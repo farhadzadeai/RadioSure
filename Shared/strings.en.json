@@ -1,5 +1,5 @@
 ﻿{
-    "About.Text":  "A lightweight, classic internet radio player and recorder.\n\nStation data: Radio-Browser community database (radio-browser.info).\nAudio: BASS library (un4seen.com) - free for non-commercial use.\n\nNo account, no advertising, no tracking. All data stays on this computer.",
+    "About.Text":  "A lightweight, classic internet radio player and recorder.\n\nStation data: Radio-Browser community database (radio-browser.info).\nAudio: AVFoundation native playback.\n\nNo account, no advertising, no tracking. All data stays on this computer.",
     "About.Version":  "Version {0}",
     "Add":  "Add",
     "All":  "All",
