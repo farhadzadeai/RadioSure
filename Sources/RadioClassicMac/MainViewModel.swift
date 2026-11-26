@@ -75,6 +75,7 @@ final class MainViewModel: ObservableObject {
     private var lastVolumeSaved = -1
     private var lastMutedSaved: Bool?
     private var lastEqualizer = EqSettings()
+    private var regularWindowSize: NSSize?
 
     var selectedStation: Station? {
         stations.first { $0.id == selectedStationID }
@@ -580,7 +581,24 @@ final class MainViewModel: ObservableObject {
     func toggleCompactMode() {
         compactMode.toggle()
         settingsStore.current.compactMode = compactMode
+        applyWindowMode()
         objectWillChange.send()
+    }
+
+    func applyWindowMode() {
+        guard let window = MainWindowRegistry.shared.window else { return }
+        if compactMode {
+            if regularWindowSize == nil, window.frame.size.height > 200 {
+                regularWindowSize = window.frame.size
+            }
+            if abs(window.frame.size.width - 380) > 2 || window.frame.size.height > 160 {
+                window.setContentSize(NSSize(width: 380, height: 126))
+            }
+        } else {
+            let fallback = NSSize(width: settingsStore.current.windowWidth, height: settingsStore.current.windowHeight)
+            window.setContentSize(regularWindowSize ?? fallback)
+            regularWindowSize = nil
+        }
     }
 
     func setFiltersVisible(_ visible: Bool) {

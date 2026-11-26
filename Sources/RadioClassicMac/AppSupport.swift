@@ -47,7 +47,9 @@ final class WindowCloseDelegate: NSObject, NSWindowDelegate {
     }
 
     func windowDidEndLiveResize(_ notification: Notification) {
-        guard let window = notification.object as? NSWindow, let model else { return }
+        guard let window = notification.object as? NSWindow,
+              let model,
+              !model.compactMode else { return }
         let size = window.frame.size
         if size.width >= 300, size.height >= 130 {
             model.settingsStore.current.windowWidth = Double(size.width)
@@ -55,10 +57,9 @@ final class WindowCloseDelegate: NSObject, NSWindowDelegate {
         }
     }
 
-    func windowDidMiniaturize(_ notification: Notification) {
+    func windowWillMiniaturize(_ notification: Notification) {
         guard let window = notification.object as? NSWindow,
               model?.settingsStore.current.minimizeToMenuBar == true else { return }
-        window.deminiaturize(nil)
         window.orderOut(nil)
     }
 }
@@ -74,6 +75,7 @@ final class MenuBarController: NSObject {
     private var menuSignature = ""
     private var nowPlayingSignature = ""
     private var globalKeyMonitor: Any?
+    private var equalizerBars: [CGFloat] = [0.2, 0.2, 0.2, 0.2, 0.2]
 
     func configure(model: MainViewModel) {
         self.model = model
@@ -118,6 +120,7 @@ final class MenuBarController: NSObject {
             nowPlayingSignature = signature
             updateNowPlaying()
         }
+        updateStatusIcon(model)
     }
 
     private func configureGlobalHotkeys() {
@@ -199,6 +202,44 @@ final class MenuBarController: NSObject {
         let item = NSMenuItem(title: title, action: action, keyEquivalent: key)
         item.target = self
         return item
+    }
+
+
+    private func updateStatusIcon(_ model: MainViewModel) {
+        guard let button = statusItem?.button else { return }
+        guard model.player.state == .playing else {
+            equalizerBars = [0.2, 0.2, 0.2, 0.2, 0.2]
+            button.image = NSImage(systemSymbolName: "dot.radiowaves.left.and.right", accessibilityDescription: "RadioClassic")
+            return
+        }
+        let spectrum = model.player.spectrum(bins: equalizerBars.count)
+        let level = CGFloat(model.player.audioLevel)
+        for index in equalizerBars.indices {
+            let spectral = index < spectrum.count ? CGFloat(spectrum[index]) : 0
+            let target = max(0.14, min(1, spectral * 1.25 + level * 0.22))
+            equalizerBars[index] = max(target, equalizerBars[index] * 0.62)
+        }
+        button.image = makeEqualizerIcon(bars: equalizerBars)
+    }
+
+    private func makeEqualizerIcon(bars: [CGFloat]) -> NSImage {
+        let size = NSSize(width: 18, height: 18)
+        let image = NSImage(size: size)
+        image.lockFocus()
+        let widths: CGFloat = 2.4
+        let spacing: CGFloat = 1.25
+        let totalWidth = CGFloat(bars.count) * widths + CGFloat(bars.count - 1) * spacing
+        let startX = (size.width - totalWidth) / 2
+        for (index, value) in bars.enumerated() {
+            let height = max(2.5, 15.5 * value)
+            let rect = NSRect(x: startX + CGFloat(index) * (widths + spacing), y: 1.4, width: widths, height: height)
+            let alpha = 0.38 + 0.62 * value
+            NSColor(calibratedRed: 0.05, green: 0.95, blue: 0.28, alpha: alpha).setFill()
+            NSBezierPath(roundedRect: rect, xRadius: 1.1, yRadius: 1.1).fill()
+        }
+        image.unlockFocus()
+        image.isTemplate = false
+        return image
     }
 
     private func updateNowPlaying() {

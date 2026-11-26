@@ -22,7 +22,7 @@ struct ContentView: View {
             .frame(
                 minWidth: model.compactMode ? 340 : 500,
                 idealWidth: CGFloat(model.settingsStore.current.windowWidth),
-                minHeight: model.compactMode ? 142 : 420,
+                minHeight: model.compactMode ? 120 : 420,
                 idealHeight: CGFloat(model.settingsStore.current.windowHeight)
             )
             .environmentObject(model)
@@ -39,6 +39,9 @@ struct ContentView: View {
             .onAppear {
                 AppActionBridge.shared.model = model
                 MenuBarController.shared.configure(model: model)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    model.applyWindowMode()
+                }
             }
             .onReceive(model.settingsStore.objectWillChange) { _ in model.objectWillChange.send() }
             .onReceive(model.recordingManager.objectWillChange) { _ in model.refreshRecordingState() }
@@ -75,11 +78,12 @@ struct ContentView: View {
 
     private var compactContent: some View {
         VStack(spacing: 4) {
-            compactTopLine
             displayPanel
-            transportBar
+            compactTransportBar
+            Spacer(minLength: 0)
         }
         .padding(6)
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
     }
 
     private var searchRow: some View {
@@ -212,21 +216,41 @@ struct ContentView: View {
         .menuStyle(.borderlessButton)
     }
 
-    private var compactTopLine: some View {
-        HStack(spacing: 5) {
-            Text(model.stationLine.isEmpty ? model.localization.t("AppTitle") : model.stationLine)
-                .font(.system(size: 11, weight: .semibold))
-                .foregroundStyle(model.themeService.color("Text"))
-                .lineLimit(1)
-            Spacer()
+
+    private var compactTransportBar: some View {
+        HStack(spacing: 4) {
+            PlayerButton(systemName: "backward.fill", help: model.localization.t("Tip.Previous")) { model.step(-1) }
+            PlayerButton(systemName: playPauseSymbol, help: model.localization.t(playPauseHelpKey)) { model.playPause() }
+            PlayerButton(systemName: "stop.fill", help: model.localization.t("Tip.Stop")) { model.stop() }
+            PlayerButton(systemName: "forward.fill", help: model.localization.t("Tip.Next")) { model.step(1) }
+            PlayerButton(
+                systemName: "record.circle",
+                help: model.localization.t("Tip.Record"),
+                active: model.targetStationRecording,
+                tint: model.targetStationRecording || model.isRecordingActive ? model.themeService.color("RecBrush") : model.themeService.color("Text")
+            ) { model.toggleRecord() }
+            Spacer(minLength: 2)
+            Button {
+                model.player.muted.toggle()
+            } label: {
+                Image(systemName: model.player.muted || model.player.volume == 0 ? "speaker.slash.fill" : "speaker.wave.2.fill")
+                    .font(.system(size: 10))
+                    .foregroundStyle(model.themeService.color("TextDim"))
+            }
+            .buttonStyle(.plain)
+            Slider(value: volumeBinding, in: 0...100)
+                .frame(width: 58)
+            menuButton
             Button { model.toggleCompactMode() } label: {
                 Image(systemName: "arrow.up.left.and.arrow.down.right")
                     .font(.system(size: 10, weight: .bold))
                     .foregroundStyle(model.themeService.color("TextDim"))
+                    .frame(width: 20, height: 24)
             }
             .buttonStyle(.plain)
             .help(model.localization.t("Tip.Expand"))
         }
+        .frame(height: 30)
     }
 
     private var displayPanel: some View {
