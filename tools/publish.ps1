@@ -9,7 +9,7 @@ param([switch]$SkipInno)
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $dist = Join-Path $root 'dist'
-$proj = Join-Path $root 'src\RadioSure\RadioSure.csproj'
+$proj = Join-Path $root 'src\RadioClassic\RadioClassic.csproj'
 
 Write-Host '== clean =='
 if (Test-Path $dist) { Remove-Item $dist -Recurse -Force }
