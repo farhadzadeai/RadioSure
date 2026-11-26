@@ -1,4 +1,4 @@
-﻿using System.Windows;
+using System.Windows;
 using RadioClassic.Audio;
 using RadioClassic.Core;
 using RadioClassic.Data;
@@ -42,7 +42,7 @@ public partial class App : Application
         base.OnStartup(e);
 
         AppPaths.EnsureDataDir();
-        Log.Info("RadioClassic starting");
+        Log.Info("RadioSure starting");
 
         // ---- settings, language, theme
         var settings = new SettingsService();
@@ -57,7 +57,7 @@ public partial class App : Application
         ThemeService.Apply(settings.Current.Theme, settings.Current.AccentColor);
         Resources.MergedDictionaries.Add(new ResourceDictionary
         {
-            Source = new Uri("/RadioClassic;component/Themes/Controls.xaml", UriKind.Relative)
+            Source = new Uri("/RadioSure;component/Themes/Controls.xaml", UriKind.Relative)
         });
 
         // ---- data
@@ -112,7 +112,7 @@ public partial class App : Application
         scheduler.ScheduledRecordingStarted += name =>
         {
             if (!settings.Current.NotifyScheduledRecordings || !settings.Current.ShowNotifications) return;
-            Dispatcher.BeginInvoke(() => tray.Balloon("RadioClassic", Loc.T("Sch.Started", name)));
+            Dispatcher.BeginInvoke(() => tray.Balloon("RadioSure", Loc.T("Sch.Started", name)));
         };
 
         // ---- main window
@@ -147,7 +147,7 @@ public partial class App : Application
         {
             if (_services is not null)
             {
-                Log.Info("RadioClassic shutting down");
+                Log.Info("RadioSure shutting down");
                 _services.Engine.Dispose();
                 _services.Recordings.StopAll();
                 foreach (var session in _services.Recordings.Sessions)

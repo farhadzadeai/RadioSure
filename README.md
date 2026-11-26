@@ -1,6 +1,8 @@
 <div align="center">
 
-# RadioClassic
+# RadioSure
+
+<img src="docs/logo.jpg" alt="RadioSure" width="200"/>
 
 **A faithful modern revival of the classic RadioSure internet radio player**
 
@@ -24,7 +26,7 @@ Classic internet radio, rebuilt for modern Windows — 53,000+ stations, instant
 - **Instant search** — type a few letters and the list filters live across 53k stations in milliseconds
 - **BASS audio engine** — the same proven audio library used by the original RadioSure: fast buffering, gapless reconnects, minimal CPU
 - **MP3, AAC, AAC+, OGG, Opus, FLAC, HLS** — codec support well beyond the original
-- **Honest playback** — if a station connects but broadcasts silence or stalls mid-stream, RadioClassic tells you instead of pretending everything is fine
+- **Honest playback** — if a station connects but broadcasts silence or stalls mid-stream, RadioSure tells you instead of pretending everything is fine
 
 ## Screenshots
 
@@ -42,15 +44,15 @@ Grab the latest release from the [Releases](../../releases) page:
 
 | File | Size | Best for |
 |---|---|---|
-| `RadioClassic-Setup-x-online.exe` | ~3 MB | Most users — small download, installs .NET automatically if needed |
-| `RadioClassic-Setup-x-offline.exe` | ~54 MB | Offline machines — fully self-contained |
-| `RadioClassic-portable.zip` | ~1 MB | USB stick / no-install — single exe, keeps all data beside itself |
+| `RadioSure-Setup-x-online.exe` | ~3 MB | Most users — small download, installs .NET automatically if needed |
+| `RadioSure-Setup-x-offline.exe` | ~54 MB | Offline machines — fully self-contained |
+| `RadioSure-portable.zip` | ~1 MB | USB stick / no-install — single exe, keeps all data beside itself |
 
 > **Windows 10 1607+ and Windows 11** (x64). The online installer needs an internet connection on first run; the offline installer and portable build do not.
 
 ### Portable mode
 
-Extract `RadioClassic-portable.zip` anywhere (USB stick, cloud drive, any folder). The single `RadioClassic.exe` keeps its database, settings and recordings in a `Data` folder beside itself — nothing is written to your user profile or registry. To convert a regular install into portable mode, place an empty `portable.flag` file next to the exe.
+Extract `RadioSure-portable.zip` anywhere (USB stick, cloud drive, any folder). The single `RadioSure.exe` keeps its database, settings and recordings in a `Data` folder beside itself — nothing is written to your user profile or registry. To convert a regular install into portable mode, place an empty `portable.flag` file next to the exe.
 
 ---
 
@@ -93,7 +95,7 @@ Use the dropdowns beside it for precise filtering:
 
 Press the **red record button** while a station is playing. That's it.
 
-- Recordings land in `Documents\RadioClassic Recordings\<Station>\` (or `Data\Recordings\` in portable mode)
+- Recordings land in `Documents\RadioSure Recordings\<Station>\` (or `Data\Recordings\` in portable mode)
 - When the stream sends track metadata, recording **splits automatically into one file per song**, named `Artist - Title.mp3`
 - Files are written in the stream's native format (MP3/AAC) — no re-encoding, no quality loss
 - **Scheduled recording**: set up time-based recordings from the recordings menu — great for capturing a show while you're away
@@ -116,7 +118,7 @@ Switch to the compact mini-player from the view menu — a small always-on-top s
 
 ### Tray icon and global hotkeys
 
-RadioClassic minimizes to the system tray — closing the window doesn't stop the music. Right-click the tray icon for quick controls.
+RadioSure minimizes to the system tray — closing the window doesn't stop the music. Right-click the tray icon for quick controls.
 
 **Global hotkeys** (work from any application, can be disabled in settings):
 
@@ -132,7 +134,7 @@ Standard **media keys** on your keyboard (play/pause, next, previous) also work 
 
 ### Honest playback status
 
-Internet radio stations are unreliable by nature — some connect but broadcast digital silence, others stall mid-stream without disconnecting. RadioClassic watches for this: after ~8 seconds of silence or stalling it reconnects once automatically, and if the problem persists it **tells you honestly** instead of showing "Playing" forever. No more wondering whether the player or the station is broken.
+Internet radio stations are unreliable by nature — some connect but broadcast digital silence, others stall mid-stream without disconnecting. RadioSure watches for this: after ~8 seconds of silence or stalling it reconnects once automatically, and if the problem persists it **tells you honestly** instead of showing "Playing" forever. No more wondering whether the player or the station is broken.
 
 ---
 
@@ -141,17 +143,17 @@ Internet radio stations are unreliable by nature — some connect but broadcast 
 ### Building from source
 
 ```powershell
-git clone https://github.com/farhadzadeai/RadioClassic.git
-cd RadioClassic
-dotnet build src/RadioClassic.sln
+git clone https://github.com/farhadzadeai/RadioSure.git
+cd RadioSure
+dotnet build src/RadioSure.sln
 ```
 
-Requires the **[.NET 10 SDK](https://dotnet.microsoft.com/download)**. Output lands in `src/RadioClassic/bin/Debug/net10.0-windows/` — run `RadioClassic.exe` from there. No other setup needed: the native audio DLLs (BASS + codec add-ons) are committed under `src/RadioClassic/native/x64/` and copied automatically.
+Requires the **[.NET 10 SDK](https://dotnet.microsoft.com/download)**. Output lands in `src/RadioSure/bin/Debug/net10.0-windows/` — run `RadioSure.exe` from there. No other setup needed: the native audio DLLs (BASS + codec add-ons) are committed under `src/RadioSure/native/x64/` and copied automatically.
 
 ### Running tests
 
 ```powershell
-dotnet test tests/RadioClassic.Tests
+dotnet test tests/RadioSure.Tests
 ```
 
 34+ tests cover recording pipeline, codec probing, database queries, stream metadata parsing, the silence watchdog (using a local HTTP server replaying captured silent-stream frames), and WPF binding integrity. Tests that use BASS run in a serialized collection since the audio engine is process-global.
@@ -167,7 +169,7 @@ Produces in `dist/`: framework-dependent build, self-contained build, portable z
 ### Project structure
 
 ```
-src/RadioClassic/
+src/RadioSure/
   Audio/       BASS wrapper, stream playback, metadata parsing, silence watchdog
   Recording/   capture pipeline, track splitting, scheduler, file naming
   Data/        SQLite layer — stations, favorites, history, recordings
@@ -176,7 +178,7 @@ src/RadioClassic/
   Themes/      6 color themes as resource dictionaries
   Lang/        English + Persian string resources
   native/x64/  bass.dll, bass_aac, basshls, bassopus, bassflac (x64)
-tests/RadioClassic.Tests/   xunit test suite
+tests/RadioSure.Tests/   xunit test suite
 installer/     Inno Setup scripts (online + offline)
 tools/         publish script, dev utilities
 docs/          screenshots used in this README
@@ -194,8 +196,8 @@ docs/          screenshots used in this README
 
 Pull requests welcome. High-impact areas:
 
-- **Translations** — copy `src/RadioClassic/Lang/Strings.en.xaml`, translate the values, register in `Loc.cs`
-- **Themes** — copy a file in `src/RadioClassic/Themes/`, adjust the palette, register in the theme loader
+- **Translations** — copy `src/RadioSure/Lang/Strings.en.xaml`, translate the values, register in `Loc.cs`
+- **Themes** — copy a file in `src/RadioSure/Themes/`, adjust the palette, register in the theme loader
 - Bug fixes and codec edge cases — please include a test if you can reproduce the issue in a test
 
 Please keep PRs focused; open an issue first for anything architectural.
@@ -204,7 +206,7 @@ Please keep PRs focused; open an issue first for anything architectural.
 
 ## Privacy
 
-RadioClassic is a desktop app with no accounts, no telemetry, no analytics. The only network traffic is:
+RadioSure is a desktop app with no accounts, no telemetry, no analytics. The only network traffic is:
 
 1. Fetching the station directory from radio-browser.info (community service, [their privacy policy](https://www.radio-browser.info/terms))
 2. Streaming the stations you choose to play
@@ -216,7 +218,7 @@ Your favorites, history and recordings never leave your machine.
 
 - Windows-only (BASS is native x64; no plans for other platforms currently)
 - Windows 10 1607+ required for .NET 10 self-contained deployment
-- **BASS license**: BASS is free for non-commercial use. If you want to use RadioClassic commercially, you need a [BASS license](https://www.un4seen.com/) — the MIT license of this repository covers the RadioClassic code, not the BASS binaries
+- **BASS license**: BASS is free for non-commercial use. If you want to use RadioSure commercially, you need a [BASS license](https://www.un4seen.com/) — the MIT license of this repository covers the RadioSure code, not the BASS binaries
 
 ## License
 
@@ -233,7 +235,7 @@ MIT — see [LICENSE](LICENSE). The original RadioSure was freeware by Victor I.
 
 ## Support the project
 
-If RadioClassic is useful to you, consider supporting continued development — any amount helps:
+If RadioSure is useful to you, consider supporting continued development — any amount helps:
 
 **USDT (BEP20 / BSC network):**
 

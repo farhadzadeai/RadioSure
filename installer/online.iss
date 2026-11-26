@@ -1,25 +1,25 @@
-; RadioClassic online installer.
+; RadioSure online installer.
 ; Small download; checks for the .NET 10 Desktop Runtime and downloads it automatically
 ; when missing. Per-user install: no administrator rights required.
 #define AppVersion "1.0.0"
 #define SourceDir "..\dist\publish-fd"
 
 [Setup]
-AppId={{B7E4A1C2-5D3F-4A8E-9C1D-RADIOCLASSIC01}
-AppName=RadioClassic
+AppId={{B7E4A1C2-5D3F-4A8E-9C1D-RadioSure01}
+AppName=RadioSure
 AppVersion={#AppVersion}
-AppVerName=RadioClassic {#AppVersion}
-AppPublisher=RadioClassic
-DefaultDirName={localappdata}\Programs\RadioClassic
-DefaultGroupName=RadioClassic
+AppVerName=RadioSure {#AppVersion}
+AppPublisher=Farhadzadeai
+DefaultDirName={localappdata}\Programs\RadioSure
+DefaultGroupName=RadioSure
 PrivilegesRequired=lowest
 OutputDir=..\dist
-OutputBaseFilename=RadioClassic-Setup-{#AppVersion}-online
+OutputBaseFilename=RadioSure-Setup-{#AppVersion}-online
 Compression=lzma2/ultra64
 SolidCompression=yes
 WizardStyle=classic
 DisableProgramGroupPage=yes
-UninstallDisplayIcon={app}\RadioClassic.exe
+UninstallDisplayIcon={app}\RadioSure.exe
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 
@@ -35,15 +35,15 @@ Source: "{#SourceDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs
 Source: "runtime-check.ps1"; DestDir: "{tmp}"; Flags: deleteafterinstall
 
 [Icons]
-Name: "{group}\RadioClassic"; Filename: "{app}\RadioClassic.exe"
-Name: "{group}\Uninstall RadioClassic"; Filename: "{uninstallexe}"
-Name: "{autodesktop}\RadioClassic"; Filename: "{app}\RadioClassic.exe"; Tasks: desktopicon
+Name: "{group}\RadioSure"; Filename: "{app}\RadioSure.exe"
+Name: "{group}\Uninstall RadioSure"; Filename: "{uninstallexe}"
+Name: "{autodesktop}\RadioSure"; Filename: "{app}\RadioSure.exe"; Tasks: desktopicon
 
 [Run]
-Filename: "{app}\RadioClassic.exe"; Description: "{cm:LaunchProgram,RadioClassic}"; Flags: nowait postinstall skipifsilent
+Filename: "{app}\RadioSure.exe"; Description: "{cm:LaunchProgram,RadioSure}"; Flags: nowait postinstall skipifsilent
 
 [UninstallDelete]
-; User data (settings, favorites, recordings database) lives in %APPDATA%\RadioClassic and is
+; User data (settings, favorites, recordings database) lives in %APPDATA%\RadioSure and is
 ; intentionally kept on uninstall so reinstalling does not lose anything. Comment out to change.
 Type: filesandordirs; Name: "{app}\portable.flag"
 
@@ -74,7 +74,7 @@ begin
   if DotNetDesktopRuntimePresent then exit;
 
   answer := MsgBox(
-    'RadioClassic needs the Microsoft .NET 10 Desktop Runtime, which is not installed yet.'#13#10#13#10 +
+    'RadioSure needs the Microsoft .NET 10 Desktop Runtime, which is not installed yet.'#13#10#13#10 +
     'Choose Yes to download and install it now (about 55 MB, internet required). '#13#10 +
     'Choose No to continue anyway - the application will not start until the runtime is installed.',
     mbConfirmation, MB_YESNO);
@@ -85,7 +85,7 @@ begin
     '-NoProfile -ExecutionPolicy Bypass -File "' + ExpandConstant('{tmp}\runtime-check.ps1') + '"',
     '', SW_HIDE, ewWaitUntilTerminated, rc);
   if rc <> 0 then
-    MsgBox('The runtime installation did not complete. RadioClassic is still installed, but ' +
+    MsgBox('The runtime installation did not complete. RadioSure is still installed, but ' +
       'you may need to install the .NET 10 Desktop Runtime manually from https://dot.net',
       mbInformation, MB_OK);
 end;

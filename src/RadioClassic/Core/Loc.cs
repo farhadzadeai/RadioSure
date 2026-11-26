@@ -28,7 +28,7 @@ public static class Loc
         if (!Languages.Any(l => l.Code == code)) code = "en";
         var dict = new ResourceDictionary
         {
-            Source = new Uri($"/RadioClassic;component/Lang/Strings.{code}.xaml", UriKind.Relative)
+            Source = new Uri($"/RadioSure;component/Lang/Strings.{code}.xaml", UriKind.Relative)
         };
         var merged = Application.Current.Resources.MergedDictionaries;
         if (_current is not null) merged.Remove(_current);

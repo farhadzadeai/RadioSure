@@ -17,7 +17,7 @@
         <DockPanel Margin="0,0,0,12">
             <Image Source="/Assets/app-256.png" Width="52" Height="52" Margin="0,0,12,0" DockPanel.Dock="Left"/>
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="RadioClassic" FontSize="17" FontWeight="Bold"/>
+                <TextBlock Text="RadioSure" FontSize="17" FontWeight="Bold"/>
                 <TextBlock x:Name="VersionText" Style="{DynamicResource DimText}"/>
                 <TextBlock Text="{DynamicResource Abt.Tagline}" Margin="0,3,0,0"/>
             </StackPanel>

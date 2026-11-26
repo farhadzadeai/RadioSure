@@ -1,15 +1,15 @@
-# RadioClassic build/publish script.
+# RadioSure build/publish script.
 # Produces in .\dist:
 #   publish-fd\        framework-dependent build (needs .NET 10 Desktop Runtime) - for the online installer
 #   publish-sc\        self-contained single-file build                          - for the offline installer
-#   RadioClassic-portable.zip   portable version (framework-dependent + portable.flag)
+#   RadioSure-portable.zip   portable version (framework-dependent + portable.flag)
 #   installer output via Inno Setup when ISCC is available
 param([switch]$SkipInno)
 
 $ErrorActionPreference = 'Stop'
 $root = Split-Path $PSScriptRoot -Parent
 $dist = Join-Path $root 'dist'
-$proj = Join-Path $root 'src\RadioClassic\RadioClassic.csproj'
+$proj = Join-Path $root 'src\RadioSure\RadioSure.csproj'
 
 Write-Host '== clean =='
 if (Test-Path $dist) { Remove-Item $dist -Recurse -Force }
@@ -34,7 +34,7 @@ $portable = Join-Path $dist 'portable-staging'
 Copy-Item (Join-Path $dist 'publish-fd') $portable -Recurse
 # Marker file: the app stores settings/database next to the executable when present.
 New-Item -ItemType File (Join-Path $portable 'portable.flag') | Out-Null
-Compress-Archive -Path (Join-Path $portable '*') -DestinationPath (Join-Path $dist 'RadioClassic-portable.zip')
+Compress-Archive -Path (Join-Path $portable '*') -DestinationPath (Join-Path $dist 'RadioSure-portable.zip')
 Remove-Item $portable -Recurse -Force
 
 Write-Host '== sizes =='
@@ -42,7 +42,7 @@ foreach ($dir in 'publish-fd', 'publish-sc') {
     $size = (Get-ChildItem (Join-Path $dist $dir) -Recurse | Measure-Object Length -Sum).Sum
     Write-Host ("{0}: {1:N1} MB" -f $dir, ($size / 1MB))
 }
-$zip = (Get-Item (Join-Path $dist 'RadioClassic-portable.zip')).Length
+$zip = (Get-Item (Join-Path $dist 'RadioSure-portable.zip')).Length
 Write-Host ("portable zip: {0:N1} MB" -f ($zip / 1MB))
 
 if (-not $SkipInno) {

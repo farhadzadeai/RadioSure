@@ -63,8 +63,8 @@ public class AboutWindowTests
                 try
                 {
                     var merged = Application.Current.Resources.MergedDictionaries;
-                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioClassic;component/Themes/Classic.xaml", UriKind.Relative) });
-                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioClassic;component/Themes/Controls.xaml", UriKind.Relative) });
+                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioSure;component/Themes/Classic.xaml", UriKind.Relative) });
+                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioSure;component/Themes/Controls.xaml", UriKind.Relative) });
                     Loc.SetLanguage("en");
                 }
                 catch { }

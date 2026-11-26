@@ -8,7 +8,7 @@ namespace RadioClassic.Core;
 /// </summary>
 public static class AppPaths
 {
-    public const string AppName = "RadioClassic";
+    public const string AppName = "RadioSure";
 
     public static string BaseDir { get; } = AppContext.BaseDirectory;
     public static bool IsPortable { get; } = File.Exists(Path.Combine(BaseDir, "portable.flag"));
@@ -24,7 +24,7 @@ public static class AppPaths
 
     public static string DefaultRecordingDir => IsPortable
         ? Path.Combine(BaseDir, "Recordings")
-        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "RadioClassic Recordings");
+        : Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyMusic), "RadioSure Recordings");
 
     public static void EnsureDataDir() => Directory.CreateDirectory(DataDir);
 }

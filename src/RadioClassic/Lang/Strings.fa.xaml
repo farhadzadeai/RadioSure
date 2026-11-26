@@ -3,7 +3,7 @@
                     xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib">
 
     <!-- General -->
-    <s:String x:Key="AppTitle">RadioClassic</s:String>
+    <s:String x:Key="AppTitle">RadioSure</s:String>
     <s:String x:Key="OK">تأیید</s:String>
     <s:String x:Key="Cancel">انصراف</s:String>
     <s:String x:Key="Apply">اعمال</s:String>
@@ -156,7 +156,7 @@
     <s:String x:Key="Io.Exported">علاقه‌مندی‌ها خروجی گرفته شد.</s:String>
     <s:String x:Key="Io.ExportFailed">خروجی ناموفق بود: {0}</s:String>
     <s:String x:Key="Io.Filter">فهرست‌های پخش (*.m3u,*.m3u8,*.pls,*.xspf,*.json)|*.m3u;*.m3u8;*.pls;*.xspf;*.json|همه پرونده‌ها (*.*)|*.*</s:String>
-    <s:String x:Key="Io.ExportFilter">فهرست پخش M3U (*.m3u)|*.m3u|فهرست پخش PLS (*.pls)|*.pls|فهرست پخش XSPF (*.xspf)|*.xspf|RadioClassic JSON (*.json)|*.json</s:String>
+    <s:String x:Key="Io.ExportFilter">فهرست پخش M3U (*.m3u)|*.m3u|فهرست پخش PLS (*.pls)|*.pls|فهرست پخش XSPF (*.xspf)|*.xspf|RadioSure JSON (*.json)|*.json</s:String>
 
     <!-- Recordings window -->
     <s:String x:Key="Rec.Title">ضبط‌ها</s:String>
@@ -211,7 +211,7 @@
     <s:String x:Key="Sch.Weekly">هفتگی</s:String>
     <s:String x:Key="Sch.Days">روزها</s:String>
     <s:String x:Key="Sch.NextRun">اجرای بعدی: {0}</s:String>
-    <s:String x:Key="Sch.Note">توجه: ضبط‌های زمان‌بندی‌شده فقط تا وقتی RadioClassic در حال اجراست انجام می‌شوند (می‌تواند در سینی سیستم کوچک شده باشد). وقتی رایانه خاموش یا برنامه بسته است، ضبطی انجام نمی‌شود.</s:String>
+    <s:String x:Key="Sch.Note">توجه: ضبط‌های زمان‌بندی‌شده فقط تا وقتی RadioSure در حال اجراست انجام می‌شوند (می‌تواند در سینی سیستم کوچک شده باشد). وقتی رایانه خاموش یا برنامه بسته است، ضبطی انجام نمی‌شود.</s:String>
     <s:String x:Key="Sch.Started">ضبط زمان‌بندی‌شده آغاز شد: {0}</s:String>
     <s:String x:Key="Sch.InvalidDuration">لطفاً مدتی بین ۱ تا ۱۴۴۰ دقیقه وارد کنید.</s:String>
     <s:String x:Key="Day.Su">ی</s:String>
@@ -304,7 +304,7 @@
     <s:String x:Key="Hist.Empty">هنوز چیزی پخش نشده است.</s:String>
 
     <!-- Tray -->
-    <s:String x:Key="Tray.Show">نمایش RadioClassic</s:String>
+    <s:String x:Key="Tray.Show">نمایش RadioSure</s:String>
     <s:String x:Key="Tray.Volume">بلندی صدا</s:String>
     <s:String x:Key="Tray.Exit">خروج</s:String>
     <s:String x:Key="Tray.NowPlaying">{0} - {1}</s:String>
@@ -312,7 +312,7 @@
     <!-- About -->
     <s:String x:Key="About.Text">پخش‌کننده و ضبط‌کننده‌ی سبک و کلاسیک رادیو اینترنتی.&#x0a;&#x0a;داده‌ی ایستگاه‌ها: پایگاه اجتماعی Radio-Browser (radio-browser.info).&#x0a;صدا: کتابخانه‌ی BASS (un4seen.com) - رایگان برای استفاده‌ی غیرتجاری.&#x0a;&#x0a;بدون حساب کاربری، بدون تبلیغ، بدون ردیابی. همه‌ی داده‌ها روی همین رایانه می‌ماند.</s:String>
     <s:String x:Key="About.Version">نسخه {0}</s:String>
-    <s:String x:Key="Abt.Title">درباره RadioClassic</s:String>
+    <s:String x:Key="Abt.Title">درباره RadioSure</s:String>
     <s:String x:Key="Abt.Tagline">رادیوی اینترنتی کلاسیک، زنده‌شده برای ویندوز مدرن</s:String>
     <s:String x:Key="Abt.Contact">تماس</s:String>
     <s:String x:Key="Abt.Donation">حمایت از توسعه</s:String>

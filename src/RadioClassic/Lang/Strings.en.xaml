@@ -3,7 +3,7 @@
                     xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib">
 
     <!-- General -->
-    <s:String x:Key="AppTitle">RadioClassic</s:String>
+    <s:String x:Key="AppTitle">RadioSure</s:String>
     <s:String x:Key="OK">OK</s:String>
     <s:String x:Key="Cancel">Cancel</s:String>
     <s:String x:Key="Apply">Apply</s:String>
@@ -156,7 +156,7 @@
     <s:String x:Key="Io.Exported">Favorites exported.</s:String>
     <s:String x:Key="Io.ExportFailed">Export failed: {0}</s:String>
     <s:String x:Key="Io.Filter">Playlists (*.m3u,*.m3u8,*.pls,*.xspf,*.json)|*.m3u;*.m3u8;*.pls;*.xspf;*.json|All files (*.*)|*.*</s:String>
-    <s:String x:Key="Io.ExportFilter">M3U playlist (*.m3u)|*.m3u|PLS playlist (*.pls)|*.pls|XSPF playlist (*.xspf)|*.xspf|RadioClassic JSON (*.json)|*.json</s:String>
+    <s:String x:Key="Io.ExportFilter">M3U playlist (*.m3u)|*.m3u|PLS playlist (*.pls)|*.pls|XSPF playlist (*.xspf)|*.xspf|RadioSure JSON (*.json)|*.json</s:String>
 
     <!-- Recordings window -->
     <s:String x:Key="Rec.Title">Recordings</s:String>
@@ -211,7 +211,7 @@
     <s:String x:Key="Sch.Weekly">Weekly</s:String>
     <s:String x:Key="Sch.Days">Days</s:String>
     <s:String x:Key="Sch.NextRun">Next run: {0}</s:String>
-    <s:String x:Key="Sch.Note">Note: scheduled recordings run only while RadioClassic is running (it may be minimized to the tray). They cannot start while the computer is off or the application is closed.</s:String>
+    <s:String x:Key="Sch.Note">Note: scheduled recordings run only while RadioSure is running (it may be minimized to the tray). They cannot start while the computer is off or the application is closed.</s:String>
     <s:String x:Key="Sch.Started">Scheduled recording started: {0}</s:String>
     <s:String x:Key="Sch.InvalidDuration">Please enter a duration between 1 and 1440 minutes.</s:String>
     <s:String x:Key="Day.Su">Su</s:String>
@@ -304,7 +304,7 @@
     <s:String x:Key="Hist.Empty">Nothing has been played yet.</s:String>
 
     <!-- Tray -->
-    <s:String x:Key="Tray.Show">Show RadioClassic</s:String>
+    <s:String x:Key="Tray.Show">Show RadioSure</s:String>
     <s:String x:Key="Tray.Volume">Volume</s:String>
     <s:String x:Key="Tray.Exit">Exit</s:String>
     <s:String x:Key="Tray.NowPlaying">{0} - {1}</s:String>
@@ -312,7 +312,7 @@
     <!-- About -->
     <s:String x:Key="About.Text">A lightweight, classic internet radio player and recorder.&#x0a;&#x0a;Station data: Radio-Browser community database (radio-browser.info).&#x0a;Audio: BASS library (un4seen.com) - free for non-commercial use.&#x0a;&#x0a;No account, no advertising, no tracking. All data stays on this computer.</s:String>
     <s:String x:Key="About.Version">Version {0}</s:String>
-    <s:String x:Key="Abt.Title">About RadioClassic</s:String>
+    <s:String x:Key="Abt.Title">About RadioSure</s:String>
     <s:String x:Key="Abt.Tagline">Classic internet radio, revived for modern Windows</s:String>
     <s:String x:Key="Abt.Contact">Contact</s:String>
     <s:String x:Key="Abt.Donation">Support development</s:String>

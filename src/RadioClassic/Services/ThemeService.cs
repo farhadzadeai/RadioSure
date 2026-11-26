@@ -23,7 +23,7 @@ public static class ThemeService
         if (!Themes.Contains(theme)) theme = "Classic";
         var dict = new ResourceDictionary
         {
-            Source = new Uri($"/RadioClassic;component/Themes/{theme}.xaml", UriKind.Relative)
+            Source = new Uri($"/RadioSure;component/Themes/{theme}.xaml", UriKind.Relative)
         };
         var merged = Application.Current.Resources.MergedDictionaries;
         if (_current is not null) merged.Remove(_current);
