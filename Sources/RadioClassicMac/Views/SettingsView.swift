@@ -4,6 +4,7 @@ import SwiftUI
 struct SettingsView: View {
     @EnvironmentObject private var model: MainViewModel
     @Environment(\.dismiss) private var dismiss
+    @State private var selectedTab = 0
 
     var body: some View {
         VStack(spacing: 0) {
@@ -15,13 +16,19 @@ struct SettingsView: View {
             .padding(.horizontal, 14)
             .padding(.vertical, 10)
 
-            TabView {
-                generalTab.tabItem { Text(model.localization.t("Opt.General")) }
-                playbackTab.tabItem { Text(model.localization.t("Opt.Playback")) }
-                recordingTab.tabItem { Text(model.localization.t("Opt.Recording")) }
-                appearanceTab.tabItem { Text(model.localization.t("Opt.Appearance")) }
-                networkTab.tabItem { Text(model.localization.t("Opt.Network")) }
-                equalizerTab.tabItem { Text(model.localization.t("Eq.Title")) }
+            tabSelector
+                .padding(.horizontal, 12)
+                .padding(.bottom, 8)
+
+            Group {
+                switch selectedTab {
+                case 0: generalTab
+                case 1: playbackTab
+                case 2: recordingTab
+                case 3: appearanceTab
+                case 4: networkTab
+                default: equalizerTab
+                }
             }
             .padding(.horizontal, 12)
 
@@ -39,6 +46,39 @@ struct SettingsView: View {
         }
         .frame(width: 560, height: 480)
         .background(model.themeService.color("WindowBack"))
+    }
+
+    private var tabSelector: some View {
+        HStack(spacing: 3) {
+            tabButton(0, title: model.localization.t("Opt.General"))
+            tabButton(1, title: model.localization.t("Opt.Playback"))
+            tabButton(2, title: model.localization.t("Opt.Recording"))
+            tabButton(3, title: model.localization.t("Opt.Appearance"))
+            tabButton(4, title: model.localization.t("Opt.Network"))
+            tabButton(5, title: model.localization.t("Eq.Title"))
+        }
+        .padding(3)
+        .background(RoundedRectangle(cornerRadius: 6).fill(model.themeService.color("InputBack")))
+        .overlay(RoundedRectangle(cornerRadius: 6).stroke(model.themeService.color("BorderBrush"), lineWidth: 1))
+    }
+
+    private func tabButton(_ index: Int, title: String) -> some View {
+        Button {
+            selectedTab = index
+        } label: {
+            Text(title)
+                .font(.system(size: 11, weight: selectedTab == index ? .semibold : .regular))
+                .foregroundStyle(selectedTab == index ? model.themeService.color("AccentTextBrush") : model.themeService.color("Text"))
+                .lineLimit(1)
+                .minimumScaleFactor(0.8)
+                .frame(maxWidth: .infinity)
+                .frame(height: 24)
+                .background(
+                    RoundedRectangle(cornerRadius: 4)
+                        .fill(selectedTab == index ? model.themeService.color("HoverBack") : Color.clear)
+                )
+        }
+        .buttonStyle(.plain)
     }
 
     private func binding<T>(_ keyPath: WritableKeyPath<AppSettings, T>) -> Binding<T> {
