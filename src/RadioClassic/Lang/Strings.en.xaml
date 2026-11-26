@@ -312,4 +312,12 @@
     <!-- About -->
     <s:String x:Key="About.Text">A lightweight, classic internet radio player and recorder.&#x0a;&#x0a;Station data: Radio-Browser community database (radio-browser.info).&#x0a;Audio: BASS library (un4seen.com) - free for non-commercial use.&#x0a;&#x0a;No account, no advertising, no tracking. All data stays on this computer.</s:String>
     <s:String x:Key="About.Version">Version {0}</s:String>
+    <s:String x:Key="Abt.Title">About RadioClassic</s:String>
+    <s:String x:Key="Abt.Tagline">Classic internet radio, revived for modern Windows</s:String>
+    <s:String x:Key="Abt.Contact">Contact</s:String>
+    <s:String x:Key="Abt.Donation">Support development</s:String>
+    <s:String x:Key="Abt.DonationHint">USDT (BEP20 / BSC network) - any amount helps keep development going:</s:String>
+    <s:String x:Key="Abt.Copy">Copy</s:String>
+    <s:String x:Key="Abt.Copied">Copied!</s:String>
+    <s:String x:Key="Abt.StationData">Station data by the radio-browser.info community. Audio by BASS (free for non-commercial use).</s:String>
 </ResourceDictionary>

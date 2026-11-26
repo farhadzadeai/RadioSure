@@ -312,4 +312,12 @@
     <!-- About -->
     <s:String x:Key="About.Text">پخش‌کننده و ضبط‌کننده‌ی سبک و کلاسیک رادیو اینترنتی.&#x0a;&#x0a;داده‌ی ایستگاه‌ها: پایگاه اجتماعی Radio-Browser (radio-browser.info).&#x0a;صدا: کتابخانه‌ی BASS (un4seen.com) - رایگان برای استفاده‌ی غیرتجاری.&#x0a;&#x0a;بدون حساب کاربری، بدون تبلیغ، بدون ردیابی. همه‌ی داده‌ها روی همین رایانه می‌ماند.</s:String>
     <s:String x:Key="About.Version">نسخه {0}</s:String>
+    <s:String x:Key="Abt.Title">درباره RadioClassic</s:String>
+    <s:String x:Key="Abt.Tagline">رادیوی اینترنتی کلاسیک، زنده‌شده برای ویندوز مدرن</s:String>
+    <s:String x:Key="Abt.Contact">تماس</s:String>
+    <s:String x:Key="Abt.Donation">حمایت از توسعه</s:String>
+    <s:String x:Key="Abt.DonationHint">USDT (شبکه BEP20 / BSC) — هر مبلغی به ادامه‌ی توسعه کمک می‌کند:</s:String>
+    <s:String x:Key="Abt.Copy">کپی</s:String>
+    <s:String x:Key="Abt.Copied">کپی شد!</s:String>
+    <s:String x:Key="Abt.StationData">داده‌ی ایستگاه‌ها از اجتماع radio-browser.info — صدا با BASS (رایگان برای استفاده‌ی غیرتجاری)</s:String>
 </ResourceDictionary>

@@ -1,27 +1,76 @@
 <Window x:Class="RadioClassic.Views.AboutWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{DynamicResource Abt.Title}" Width="380" SizeToContent="Height" ResizeMode="NoResize"
+        Title="{DynamicResource Abt.Title}" Width="400" SizeToContent="Height" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Background="{DynamicResource WindowBack}" FontFamily="{DynamicResource AppFont}" FontSize="{DynamicResource AppFontSize}">
-    <Grid Margin="14">
+    <Grid Margin="16">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DockPanel Margin="0,0,0,10">
-            <Image Source="/Assets/app.png" Width="48" Height="48" Margin="0,0,10,0" DockPanel.Dock="Left"/>
+
+        <!-- header: icon + name + version -->
+        <DockPanel Margin="0,0,0,12">
+            <Image Source="/Assets/app-256.png" Width="52" Height="52" Margin="0,0,12,0" DockPanel.Dock="Left"/>
             <StackPanel VerticalAlignment="Center">
-                <TextBlock Text="RadioClassic" FontSize="16" FontWeight="Bold"/>
+                <TextBlock Text="RadioClassic" FontSize="17" FontWeight="Bold"/>
                 <TextBlock x:Name="VersionText" Style="{DynamicResource DimText}"/>
-                <TextBlock Text="{DynamicResource Abt.Tagline}" Margin="0,4,0,0"/>
+                <TextBlock Text="{DynamicResource Abt.Tagline}" Margin="0,3,0,0"/>
             </StackPanel>
         </DockPanel>
-        <TextBlock Grid.Row="1" x:Name="CreditsText" TextWrapping="Wrap" Style="{DynamicResource DimText}" Margin="0,0,0,10"/>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
-            <Button x:Name="RbLink" Content="radio-browser.info" Click="OnRbLink" Margin="0,0,6,0" Padding="8,2"/>
-            <Button Content="{DynamicResource Close}" IsCancel="True" Click="OnClose"/>
+
+        <!-- contact -->
+        <StackPanel Grid.Row="1" Margin="0,0,0,10">
+            <TextBlock Text="{DynamicResource Abt.Contact}" FontWeight="SemiBold" Margin="0,0,0,5"/>
+            <Grid Margin="8,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="70"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Email" Style="{DynamicResource DimText}" Margin="0,1"/>
+                <TextBlock Grid.Column="1" Margin="0,1">
+                    <Hyperlink x:Name="EmailLink" NavigateUri="mailto:Farhadzadeai@gmail.com" RequestNavigate="OnLink">Farhadzadeai@gmail.com</Hyperlink>
+                </TextBlock>
+                <TextBlock Grid.Row="1" Text="Instagram" Style="{DynamicResource DimText}" Margin="0,1"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Margin="0,1">
+                    <Hyperlink NavigateUri="https://instagram.com/farhadzade.ai" RequestNavigate="OnLink">@farhadzade.ai</Hyperlink>
+                </TextBlock>
+                <TextBlock Grid.Row="2" Text="LinkedIn" Style="{DynamicResource DimText}" Margin="0,1"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Margin="0,1">
+                    <Hyperlink NavigateUri="https://www.linkedin.com/in/mohammad-farhadzade/" RequestNavigate="OnLink">Mohammad Farhadzade</Hyperlink>
+                </TextBlock>
+            </Grid>
+        </StackPanel>
+
+        <!-- donation -->
+        <StackPanel Grid.Row="2" Margin="0,0,0,8">
+            <TextBlock Text="{DynamicResource Abt.Donation}" FontWeight="SemiBold" Margin="0,0,0,5"/>
+            <TextBlock Text="{DynamicResource Abt.DonationHint}" Style="{DynamicResource DimText}" Margin="8,0,0,4"/>
+            <DockPanel Margin="8,0,0,0">
+                <Button x:Name="CopyWalletBtn" DockPanel.Dock="Right" Padding="10,2" Margin="6,0,0,0"
+                        Content="{DynamicResource Abt.Copy}" Click="OnCopyWallet"/>
+                <Border BorderBrush="{DynamicResource BorderBrush}" BorderThickness="1" CornerRadius="2" Padding="6,2">
+                    <TextBlock x:Name="WalletText" Text="0x5020005385e2B2e61d57a66159c494b1F7a59FDB"
+                               FontFamily="Consolas" FontSize="11" VerticalAlignment="Center"
+                               TextTrimming="CharacterEllipsis"/>
+                </Border>
+            </DockPanel>
+        </StackPanel>
+
+        <TextBlock Grid.Row="3" Text="{DynamicResource Abt.StationData}" Style="{DynamicResource DimText}"
+                   FontSize="10" Margin="0,4,0,8"/>
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Content="{DynamicResource Close}" IsCancel="True" Click="OnClose" Padding="14,2"/>
         </StackPanel>
     </Grid>
 </Window>
