@@ -27,6 +27,8 @@ struct ContentView: View {
             )
             .environmentObject(model)
             .environment(\.layoutDirection, model.localization.isRTL ? .rightToLeft : .leftToRight)
+            .preferredColorScheme(model.themeService.colorScheme)
+            .foregroundStyle(model.themeService.color("Text"))
             .onReceive(timer) { _ in
                 model.tick()
                 if let window = MainWindowRegistry.shared.window, window.title != model.windowTitle {
@@ -44,6 +46,8 @@ struct ContentView: View {
                 SheetHost(sheet: sheet)
                     .environmentObject(model)
                     .environment(\.layoutDirection, model.localization.isRTL ? .rightToLeft : .leftToRight)
+                    .preferredColorScheme(model.themeService.colorScheme)
+                    .foregroundStyle(model.themeService.color("Text"))
             }
     }
 

@@ -42,6 +42,21 @@ public final class ThemeService: ObservableObject {
         themes[currentName] ?? themes["Classic"] ?? ThemePalette(colors: [:])
     }
 
+    public var colorScheme: ColorScheme {
+        Self.isLightHex(current.hex("WindowBack")) ? .light : .dark
+    }
+
+    public static func isLightHex(_ hex: String) -> Bool {
+        var value = hex.trimmingCharacters(in: .whitespacesAndNewlines)
+        if value.hasPrefix("#") { value.removeFirst() }
+        guard value.count >= 6, let rgb = UInt64(value.prefix(6), radix: 16) else { return false }
+        let red = Double((rgb >> 16) & 0xFF) / 255
+        let green = Double((rgb >> 8) & 0xFF) / 255
+        let blue = Double(rgb & 0xFF) / 255
+        let luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+        return luminance >= 0.5
+    }
+
     public func setTheme(_ name: String) {
         if themes[name] != nil { currentName = name }
     }

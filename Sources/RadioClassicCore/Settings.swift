@@ -117,6 +117,7 @@ public struct AppSettings: Codable, Equatable, Sendable {
         timeoutSeconds = min(max(timeoutSeconds, 3), 60)
         databaseRefreshDays = min(max(databaseRefreshDays, 1), 90)
         proxyPort = min(max(proxyPort, 1), 65535)
+        if !["en", "fa"].contains(language) { language = "en" }
         if recordingDirectory.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             recordingDirectory = AppPaths.defaultRecordingDirectory.path
         }

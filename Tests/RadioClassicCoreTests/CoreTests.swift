@@ -151,6 +151,14 @@ final class CoreTests: XCTestCase {
         XCTAssertEqual("Jazz", legacy[0].favoriteFolder)
     }
 
+    func testDefaultLanguageIsEnglishAndInvalidLanguageFallsBack() {
+        var settings = AppSettings()
+        XCTAssertEqual("en", settings.language)
+        settings.language = "invalid"
+        settings.sanitize()
+        XCTAssertEqual("en", settings.language)
+    }
+
     func testSettingsRoundTripAndCorruptFallback() throws {
         let file = FileManager.default.temporaryDirectory.appendingPathComponent("rc-settings-" + UUID().uuidString + ".json")
         defer { try? FileManager.default.removeItem(at: file) }
