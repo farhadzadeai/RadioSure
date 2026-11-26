@@ -60,7 +60,14 @@ public class AboutWindowTests
             try
             {
                 EnsureApp();
-                try { Loc.SetLanguage("en"); } catch { }
+                try
+                {
+                    var merged = Application.Current.Resources.MergedDictionaries;
+                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioClassic;component/Themes/Classic.xaml", UriKind.Relative) });
+                    merged.Add(new ResourceDictionary { Source = new Uri("/RadioClassic;component/Themes/Controls.xaml", UriKind.Relative) });
+                    Loc.SetLanguage("en");
+                }
+                catch { }
                 var window = new AboutWindow();
                 window.Show();
                 window.UpdateLayout();

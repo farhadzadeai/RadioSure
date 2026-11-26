@@ -1,7 +1,7 @@
 <Window x:Class="RadioClassic.Views.AboutWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="{DynamicResource Abt.Title}" Width="400" SizeToContent="Height" ResizeMode="NoResize"
+        Title="{DynamicResource Abt.Title}" Width="420" SizeToContent="Height" ResizeMode="NoResize"
         WindowStartupLocation="CenterOwner"
         Background="{DynamicResource WindowBack}" FontFamily="{DynamicResource AppFont}" FontSize="{DynamicResource AppFontSize}">
     <Grid Margin="16">
@@ -54,7 +54,7 @@
         <!-- donation -->
         <StackPanel Grid.Row="2" Margin="0,0,0,8">
             <TextBlock Text="{DynamicResource Abt.Donation}" FontWeight="SemiBold" Margin="0,0,0,5"/>
-            <TextBlock Text="{DynamicResource Abt.DonationHint}" Style="{DynamicResource DimText}" Margin="8,0,0,4"/>
+            <TextBlock Text="{DynamicResource Abt.DonationHint}" Style="{DynamicResource DimText}" TextWrapping="Wrap" Margin="8,0,0,4"/>
             <DockPanel Margin="8,0,0,0">
                 <Button x:Name="CopyWalletBtn" DockPanel.Dock="Right" Padding="10,2" Margin="6,0,0,0"
                         Content="{DynamicResource Abt.Copy}" Click="OnCopyWallet"/>
